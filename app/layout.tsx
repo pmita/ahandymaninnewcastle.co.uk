@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 // UTILS
 import { roboto, poppins } from "@/utils/fonts";
+import { cn } from "@/utils/helpers";
 // STYLES
 import '@/styles/global.css';
 
@@ -16,7 +17,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${poppins.variable}`}>{children}</body>
+      <body 
+        className={cn(
+          "min-h-screen bg-secondary font-roboto antialiased",
+          roboto.variable,
+          poppins.variable
+        
+        )}
+      >
+        {children}
+      </body>
     </html>
   );
 }
