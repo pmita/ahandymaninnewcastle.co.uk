@@ -8,3 +8,9 @@
   --alternate: 113 73 230; /* purple */
   --danger: 243 78 78; /* red */
 }
+
+.container{
+  max-width: 1536px;
+  margin-left: auto;
+  margin-right: auto;
+}
