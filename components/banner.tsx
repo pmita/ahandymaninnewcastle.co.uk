@@ -6,7 +6,7 @@ import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/utils/helpers";
 
 export const bannerVariants = cva(
-  "container", {
+  "container w-full", {
     variants: {
       variant: {
         split: "flex justify-center items-stretch md:flex-row flex-col",
@@ -19,6 +19,10 @@ export const bannerVariants = cva(
         threeQuarters: "h-[75vh]",
         full: "h-[100vh]",
       },
+    },
+    defaultVariants: {
+      variant: "center",
+      size: "default",
     }
   }
 );
@@ -27,11 +31,11 @@ export interface IBanner extends React.HTMLAttributes<HTMLDivElement>, VariantPr
   className?: string;
 }
 
-export const Banner = React.forwardRef<HTMLDivElement, IBanner>(({ className, ...props}, ref) => {
+export const Banner = React.forwardRef<HTMLDivElement, IBanner>(({ className, variant, size, ...props}, ref) => {
   return (
     <div
       ref={ref}
-      className={cn(bannerVariants({ variant: "center", size: "full" }), className)}
+      className={cn(bannerVariants({ variant, size, className }))}
       {...props}
     />
   );

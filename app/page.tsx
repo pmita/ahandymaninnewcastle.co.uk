@@ -1,8 +1,25 @@
+// COMPONENTS
+import { 
+  Banner,
+  BannerDescription, 
+  BannerFooter, 
+  BannerHeader, 
+  BannerTitle, 
+  bannerVariants
+} from "@/components/banner";
+// UTILS
+import { cn } from "@/utils/helpers";
+
 export default function Home() {
   return (
-    <main className="grid place-content-center">
-      <h1 className="font-roboto text-primary">Welcome to homepage</h1>
-      <h1 className="font-poppins text-primary">Welcome to homepage</h1>
-    </main>
+    <Banner className={cn(bannerVariants({ variant: "split", size: 'full' }))}>
+      <BannerHeader className="bg-black flex-1 flex flex-col justify-center items-start">
+        <BannerTitle>Home</BannerTitle>
+        <BannerDescription>Home page description</BannerDescription>
+      </BannerHeader>        
+      <BannerFooter className="bg-primary flex-1 grid place-content-center">
+        <p>Footer content</p>
+      </BannerFooter>
+    </Banner>
   );
 }
