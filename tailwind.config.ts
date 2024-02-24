@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         primary: 'rgb(var(--primary))',
         secondary: 'rgb(var(--secondary))',
+        alternate : 'rgb(var(--alternate))',
         danger: 'rgb(var(--danger))',
       },
 			fontFamily: {
