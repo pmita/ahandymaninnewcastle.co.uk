@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+// COMPONENTS
+import { NavMenu } from "@/components/nav-menu";
 // UTILS
 import { roboto, poppins } from "@/utils/fonts";
 import { cn } from "@/utils/helpers";
@@ -25,6 +27,7 @@ export default function RootLayout({
         
         )}
       >
+        <NavMenu />
         {children}
       </body>
     </html>
