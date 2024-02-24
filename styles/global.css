@@ -5,4 +5,5 @@
 :root {
   --primary: 30 30 30; /* black */
   --secondary: 255 255 255; /* white */
+  --danger: 243 78 78; /* red */
 }
