@@ -14,8 +14,8 @@ export default function Home() {
   return (
     <Banner className={cn(bannerVariants({ variant: "split", size: 'full' }))}>
       <BannerHeader className="bg-black flex-1 flex flex-col justify-center items-start">
-        <BannerTitle>Home</BannerTitle>
-        <BannerDescription>Home page description</BannerDescription>
+        <BannerTitle className="text-xl">We <span className="text-alternate">paint</span>, we <span className="text-alternate">build</span>, and we <span className="text-alternate">fix</span> all your house related problems</BannerTitle>
+        <BannerDescription>Affordable solutions to common problems, with a unique customer experience for everyday households</BannerDescription>
       </BannerHeader>        
       <BannerFooter className="bg-primary flex-1 grid place-content-center">
         <p>Footer content</p>
