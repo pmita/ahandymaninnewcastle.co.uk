@@ -7,7 +7,7 @@ export async function NavMenu() {
     <nav className="max-w-6xl mx-auto bg-secondary py-8 px-5 flex justify-between lg:px-8">
       <Link 
         href="/" 
-        className="text-2xl text-primary font-poppins font-bold"
+        className="text-xl text-primary font-poppins font-bold"
       >
         A <span className="text-alternate">Handyman</span> in Newcastle
       </Link>
