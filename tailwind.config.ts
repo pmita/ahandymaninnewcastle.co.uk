@@ -12,6 +12,10 @@ const config: Config = {
         primary: 'rgb(var(--primary))',
         secondary: 'rgb(var(--secondary))',
         danger: 'rgb(var(--danger))',
+      },
+			fontFamily: {
+        roboto: ['var(--font-roboto)'],
+        poppins: ['var(--font-poppins)'],
       }
     },
   },
