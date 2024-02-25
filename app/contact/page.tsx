@@ -1,11 +1,10 @@
-// COMPONENTS
-import { ContactForm } from "@/components/contact-form";
 
 
 export default async function ContactPage() {
   return (
     <main className="grid place-content-center">
-      <ContactForm />
+      <h1 className="font-roboto text-primary">Contact us</h1>
+      <h1 className="font-poppins text-primary">Contact us</h1>
     </main>
   )
 }
