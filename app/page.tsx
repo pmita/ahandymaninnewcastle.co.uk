@@ -10,8 +10,10 @@ import {
   bannerVariants
 } from "@/components/banner";
 import { buttonVariants } from "@/components/ui/button";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 // UTILS
 import { cn } from "@/utils/helpers";
+import { DrillAndWrenchSVG, PaintBrushSVG, TillingSVG } from "@/components/SVGs";
 
 export default function Home() {
   return (
@@ -40,6 +42,34 @@ export default function Home() {
           </Link>
         </BannerFooter>
       </Banner>
+
+      <section className={cn(bannerVariants({ variant: "center", size: "threeQuarters", className: "flex-col items-stretch gap-10" }))}>
+        <h2 className="font-font font-poppins text-xl text-primary text-center">Our Expertise</h2>
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,300px))] auto-rows-[350px] gap-8 mx-0 my-4 p-4 justify-center">
+          <Card className={cn("border-solid border-primary border-[0.3rem]")}>
+            <CardHeader>
+              <PaintBrushSVG width={48} height={48} fill="black"/>
+              <CardTitle className="text-lg text-primary font-bold font-poppins">Painting</CardTitle>
+              <CardDescription className="text-primary font-roboto">Our painting services are second to none, we take pride in our work and ensure that our customers are satisfied</CardDescription>
+            </ CardHeader>
+          </Card>
+          <Card className={cn("border-solid border-primary border-[0.3rem]")}>
+            <CardHeader>
+              <TillingSVG width={48} height={48} fill="black"/>
+              <CardTitle className="text-lg text-primary font-bold font-poppins">Tilling</CardTitle>
+              <CardDescription className="text-primary font-roboto">Our painting services are second to none, we take pride in our work and ensure that our customers are satisfied</CardDescription>
+            </ CardHeader>
+          </Card>
+          <Card className={cn("border-solid border-primary border-[0.3rem]")}>
+            <CardHeader>
+              <DrillAndWrenchSVG width={48} height={48} fill="black"/>
+              <CardTitle className="text-lg text-primary font-bold font-poppins">Miscelleneous</CardTitle>
+              <CardDescription className="text-primary font-roboto">Our painting services are second to none, we take pride in our work and ensure that our customers are satisfied</CardDescription>
+            </ CardHeader>
+          </Card>
+        </div>
+      </section>
+
     </main>
   );
 }
