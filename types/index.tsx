@@ -9,7 +9,7 @@ export type SVGPropType = {
   onClick?: () => void;
 }
 
-// INPUTS
+// FORMS
 export interface IFormField {
   name: string;
   label?: string;
@@ -23,4 +23,20 @@ export interface IFormField {
     pattern?: { value: RegExp; message: string };
   }
   error?: string; 
+}
+
+export interface IContactForm {
+  fullName: string;
+  email: string;
+  mobile: string;
+  location: string;
+  additionalInfo: string;
+}
+
+export type ContactFormErrors = {
+  fullName: string;
+  email: string;
+  mobile: string;
+  location: string;
+  additionalInfo: string;
 }
