@@ -1,5 +1,6 @@
 // NEXT
 import Link from "next/link";
+import Image from "next/image";
 // COMPONENTS
 import { 
   Banner,
@@ -21,7 +22,7 @@ export default function Home() {
           <BannerTitle 
             className="text-xl text-primary"
           >
-            We <span className="text-alternate">paint</span>, we <span className="text-alternate">build</span>, we <span className="text-alternate">fix</span> all your house related problems
+            We <span className="text-alternate">paint</span>, we <span className="text-alternate">build</span>, we <span className="text-alternate">fix</span> your house related problems
           </BannerTitle>
           <BannerDescription className="text-primary">Affordable solutions to common problems, with a unique customer experience for everyday households</BannerDescription>
         </BannerHeader>        
@@ -41,7 +42,15 @@ export default function Home() {
         </BannerFooter>
       </section>
       <section className="bg-red flex-1 flex flex-col justify-center items-start">
-        <h1>Image will go here</h1>
+        <Image
+          src="/images/banner-md.jpg"
+          alt="Picture of a paint roller over white wall background"
+          style={{ width: "auto", height: "100%" }}
+          width={0}
+          height={0}
+          sizes="100vw"
+          objectFit="cover"
+        />
       </section>
     </Banner>
   );
