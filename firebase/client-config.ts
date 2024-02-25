@@ -1,6 +1,5 @@
 import firebase from "firebase/app";
 // FIREBASE SERVICES
-import "firebase/auth";
 import "firebase/firestore";
 
 const firebaseConfig = {
@@ -15,3 +14,9 @@ const firebaseConfig = {
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
+
+// SERVICES
+const firestore = firebase.firestore();
+const timestamp = firebase.firestore.FieldValue.serverTimestamp;
+
+export { firebase, firestore, timestamp };
