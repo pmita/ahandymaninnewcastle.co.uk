@@ -13,10 +13,6 @@ export const contactForm = [
       maxLength: {
         value: 30,
         message: "Your full name must be less than 30 characters",
-      },
-      pattern: {
-        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-        message: "Please enter a valid full name",
       }
     }
   },
@@ -36,7 +32,7 @@ export const contactForm = [
   {
     id: 3,
     name: 'mobile',
-    type: 'number',
+    type: 'numeric',
     placeholder: 'Mobile Number',
     validationSchema: {
       required: "Mobile number is required",
@@ -67,7 +63,7 @@ export const contactForm = [
 
 export const contactTextAreForm =   {
   id: 5,
-  name: 'tellUsMore',
+  name: 'additionalInfo',
   type: 'text',
   placeholder: 'Tell us more',
   validationSchema: {
