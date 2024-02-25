@@ -28,7 +28,7 @@ export default function TextAreaField({
       />
 
       {error && (
-        <span className="text-primary-error">{error}</span>
+        <span className="text-danger">{error}</span>
       )}
     </div>
   )
