@@ -4,7 +4,7 @@ import Link from "next/link"
 export async function NavMenu() {
 
   return (
-    <nav className="max-w-6xl mx-auto bg-secondary py-8 px-5 flex justify-between lg:px-8">
+    <nav className="container min-h-[10vh] mx-auto bg-secondary py-8 px-5 flex justify-between lg:px-8">
       <Link 
         href="/" 
         className="text-xl text-primary font-poppins font-bold"
