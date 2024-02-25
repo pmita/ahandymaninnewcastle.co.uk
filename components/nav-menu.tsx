@@ -2,12 +2,11 @@
 import Link from "next/link"
 
 export async function NavMenu() {
-
   return (
-    <nav className="max-w-6xl mx-auto bg-secondary py-8 px-5 flex justify-between lg:px-8">
+    <nav className="container min-h-[10vh] mx-auto bg-secondary flex justify-between items-center p-4">
       <Link 
         href="/" 
-        className="text-xl text-primary font-poppins font-bold"
+        className="text-md text-primary font-poppins font-bold"
       >
         A <span className="text-alternate">Handyman</span> in Newcastle
       </Link>
@@ -15,7 +14,7 @@ export async function NavMenu() {
         <li className="lg:px-4">
           <Link 
             href="/showcase" 
-            className="text-primary font-semibold hover:opacity-90"
+            className="text-primary font-semibold hover:text-alternate"
           >
             Showcase
           </Link>
@@ -23,7 +22,7 @@ export async function NavMenu() {
         <li className="lg:pl-4">
           <Link 
             href="/contact" 
-            className="text-primary font-semibold hover:opacity-90"
+            className="text-primary font-semibold hover:text-alternate"
           >
             Contact
           </Link>
