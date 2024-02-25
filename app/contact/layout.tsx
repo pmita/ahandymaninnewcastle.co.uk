@@ -1,0 +1,32 @@
+// NEXT
+import Image from 'next/image';
+// STYLES
+import '@/styles/contact-page.css';
+
+interface IContactPage {
+  children: React.ReactNode;
+}
+
+export default function ContactPageLayout({children}: IContactPage) {
+  return (
+    <section className="container min-h-[90dvh] w-full flex justify-center items-stretch">
+      <div className="flex-1 flex justify-center items-stretch backdrop-banner">
+        <Image
+          src="/images/banner-md.jpg"
+          alt="painting brush against a white wall background"
+          style={{ width: "auto", height: "100%" }}
+          width={0}
+          height={0}
+          sizes="100vw"
+          objectFit="cover"
+          objectPosition='center'
+          quality={100}
+          priority
+        />
+      </div>
+      <div className="flex-1 grid place-content-center z-10">
+          {children}
+      </div>
+    </section>
+  );
+}
