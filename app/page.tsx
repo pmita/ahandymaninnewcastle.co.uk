@@ -16,42 +16,31 @@ import { cn } from "@/utils/helpers";
 
 export default function Home() {
   return (
-    <Banner className={cn(bannerVariants({ variant: "split", className: "min-h-[90vh]" }))}>
-      <section className="flex-1 flex flex-col justify-center items-center">
-        <BannerHeader className="max-w-[350px] md:max-w-[500px]">
+    <main className="container p-10">
+      <Banner className={cn(bannerVariants({ variant: "center", size: "threeQuarters", className: "flex-col bg-alternate rounded-[25px]" }))}>
+        <BannerHeader className="text-center max-w-[350px] sm:max-w-[600px]">
           <BannerTitle 
-            className="text-xl text-primary"
+            className="text-2xl font-bold text-secondary"
           >
-            We <span className="text-alternate">paint</span>, we <span className="text-alternate">build</span>, we <span className="text-alternate">fix</span> your house related problems
+            We paint, we build, we fix all your problems
           </BannerTitle>
-          <BannerDescription className="text-primary">Affordable solutions to common problems, with a unique customer experience for everyday households</BannerDescription>
+          <BannerDescription className="text-md font-bold text-secondary ">Affordable solutions to common problems, with a unique customer experience for everyday households</BannerDescription>
         </BannerHeader>        
         <BannerFooter className="text-center text-secondary gap-5">
           <Link 
             href="/contact"
-            className={cn(buttonVariants({ variant: "primary" }))}
+            className={cn(buttonVariants({ variant: "alternate", size: "lg" }))}
           >
             Get in touch
           </Link>
           <Link 
             href="/contact"
-            className={cn(buttonVariants({ variant: "secondary" }))}
+            className={cn(buttonVariants({ variant: "alternateOutlined", size: "lg" }))}
           >
             Our work
           </Link>
         </BannerFooter>
-      </section>
-      <section className="bg-red flex-1 flex flex-col justify-center items-start">
-        <Image
-          src="/images/banner-md.jpg"
-          alt="Picture of a paint roller over white wall background"
-          style={{ width: "auto", height: "100%" }}
-          width={0}
-          height={0}
-          sizes="100vw"
-          objectFit="cover"
-        />
-      </section>
-    </Banner>
+      </Banner>
+    </main>
   );
 }
