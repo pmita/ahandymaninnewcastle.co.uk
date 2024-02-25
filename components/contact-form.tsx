@@ -48,39 +48,37 @@ export const ContactForm = () => {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col justify-center items-start gap-5">
-        <h1 className="text-lg text-alternate font-bold">Get in touch!</h1>
-        {contactForm && contactForm.map((input) => (
-          <InputField
-            key={input.id}
-            name={input.name}
-            type={input.type}
-            placeholder={input.placeholder}
-            register={register}
-            validationSchema={input.validationSchema}
-            error={errors[input.name as keyof ContactFormErrors]?.message}
-          />
-        ))}
+    <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col justify-center items-center gap-5">
+      <h1 className="text-lg text-alternate font-bold">Get in touch!</h1>
+      {contactForm && contactForm.map((input) => (
+        <InputField
+          key={input.id}
+          name={input.name}
+          type={input.type}
+          placeholder={input.placeholder}
+          register={register}
+          validationSchema={input.validationSchema}
+          error={errors[input.name as keyof ContactFormErrors]?.message}
+        />
+      ))}
 
-        {contactTextAreForm && (
-          <TextAreaField
-            name={contactTextAreForm.name}
-            placeholder={contactTextAreForm.placeholder}
-            register={register}
-            validationSchema={contactTextAreForm.validationSchema}
-            error={errors[contactTextAreForm.name as keyof ContactFormErrors]?.message}
-          />
-        )}
-
-        <Button type="submit" className={cn(buttonVariants({ variant: "primary", size: "lg" }))}>
-          Submit
-        </Button>
-      </form>
-      
-      {hasQueryBeenSent && (
-        <p className="text-lg text-poppins text-alternate font-bold">Query has been sent!</p>
+      {contactTextAreForm && (
+        <TextAreaField
+          name={contactTextAreForm.name}
+          placeholder={contactTextAreForm.placeholder}
+          register={register}
+          validationSchema={contactTextAreForm.validationSchema}
+          error={errors[contactTextAreForm.name as keyof ContactFormErrors]?.message}
+        />
       )}
-    </>
+
+      <Button type="submit" className={cn(buttonVariants({ variant: "primary", size: "lg" }))}>
+        Submit
+      </Button>
+
+      {hasQueryBeenSent && (
+        <p className="text-lg text-poppins text-alternate text-center font-bold">Query has been sent!</p>
+      )}
+    </form>
   )
 }
