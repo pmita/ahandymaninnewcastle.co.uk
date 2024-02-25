@@ -1,6 +1,5 @@
 // NEXT
 import Link from "next/link";
-import Image from "next/image";
 // COMPONENTS
 import { 
   Banner,
@@ -16,15 +15,15 @@ import { cn } from "@/utils/helpers";
 
 export default function Home() {
   return (
-    <main className="container p-10">
+    <main className="container p-5">
       <Banner className={cn(bannerVariants({ variant: "center", size: "threeQuarters", className: "flex-col bg-alternate rounded-[25px]" }))}>
         <BannerHeader className="text-center max-w-[350px] sm:max-w-[600px]">
           <BannerTitle 
-            className="text-2xl font-bold text-secondary"
+            className="text-2xl font-poppins font-bold text-secondary"
           >
             We paint, we build, we fix all your problems
           </BannerTitle>
-          <BannerDescription className="text-md font-bold text-secondary ">Affordable solutions to common problems, with a unique customer experience for everyday households</BannerDescription>
+          <BannerDescription className="text-md font-roboto font-bold text-secondary ">Affordable solutions to common problems, with a unique customer experience for everyday households</BannerDescription>
         </BannerHeader>        
         <BannerFooter className="text-center text-secondary gap-5">
           <Link 

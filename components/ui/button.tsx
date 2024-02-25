@@ -6,7 +6,7 @@ import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/utils/helpers";
 
 export const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-[6px] font-medium disabled:opacity-50 disabled:pointers-events-none", {
+  "inline-flex items-center justify-center rounded-[6px] font-medium font-poppins disabled:opacity-50 disabled:pointers-events-none", {
     variants: {
       variant: {
         primary: "bg-primary text-secondary border-[0.3rem] border-solid border-primary hover:bg-secondary hover:text-primary",
