@@ -2,7 +2,7 @@
 
 import { IFormField } from '@/types';
 
-export default function InputField({
+export function InputField({
   name,
   label,
   register,
@@ -21,7 +21,7 @@ export default function InputField({
       )}
 
       <input
-        className="w-full rounded-[6px]"
+        className="w-full border-solid border-[0.3rem] border-primary p-4 rounded-[6px]"
         id={name}
         placeholder={placeholder}
         type={type}
@@ -30,7 +30,7 @@ export default function InputField({
       />
 
       {error && (
-        <span className="text-primary-error">{error}</span>
+        <span className="text-danger">{error}</span>
       )}
     </div>
   )
