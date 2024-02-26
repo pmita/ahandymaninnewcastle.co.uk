@@ -13,12 +13,12 @@ import { buttonVariants } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 // UTILS
 import { cn } from "@/utils/helpers";
-import { DrillAndWrenchSVG, PaintBrushSVG, TillingSVG } from "@/components/SVGs";
+import { DrillAndWrenchSVG, FacebookSVG, InstagramSVG, PaintBrushSVG, TillingSVG } from "@/components/SVGs";
 import { FAQ } from "@/components/faq";
 
 export default function Home() {
   return (
-    <main className="container p-5">
+    <main className="container  px-5 pt-5">
       <Banner className={cn(bannerVariants({ variant: "center", size: "threeQuarters", className: "flex-col bg-alternate rounded-[25px]" }))}>
         <BannerHeader className="text-center max-w-[350px] sm:max-w-[600px]">
           <BannerTitle 
@@ -75,6 +75,50 @@ export default function Home() {
         <h2 className="font-font font-poppins text-xl text-alternate">FAQs</h2>
         <FAQ />
       </section>
+
+      <footer className={cn(bannerVariants({ variant: "center", size: "quarter", className: "flex-col bg-alternate rounded-t-[25px]" }))}>
+        <BannerHeader className="text-center">
+          <BannerTitle 
+            className="text-xl font-poppins font-bold text-secondary"
+          >
+            Follow us on social media
+          </BannerTitle>
+          <BannerDescription className="text-md font-roboto font-bold text-secondary">
+            <div className="text-center text-secondary flex justify-center gap-2.5">
+              <Link 
+                href="/showcase"
+                className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
+              >
+                <InstagramSVG width={24} height={24} fill="#ffffff" />
+              </Link>
+              <Link 
+                href="/showcase"
+                className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
+              >
+                <FacebookSVG width={24} height={24} fill="#ffffff" />
+              </Link>
+            </div>
+            <div className="text-center text-secondary flex justify-center gap-5">
+              <Link 
+                href="/showcase"
+                className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
+              >
+                Showcase
+              </Link>
+              <Link 
+                href="/contact"
+                className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
+              >
+                Contact
+              </Link>
+            </div>
+          </BannerDescription>
+        </BannerHeader>
+        <BannerFooter className="text-secondary flex flex-col">
+          <p>Trademark ™ A handy man in newcastle</p>
+          <p>Copyright © 2024 ahandymaninnewcastle.co.uk. All rights reserved.</p>
+        </BannerFooter>
+      </footer>
 
     </main>
   );
