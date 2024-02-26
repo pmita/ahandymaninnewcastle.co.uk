@@ -1,0 +1,35 @@
+"use client"
+
+// REACT
+import { useCallback } from "react";
+// COMPONENTS
+import { Accordion } from "./ui/accordion";
+// CONFIG
+import { faq } from '@/config/faq';
+// UTILS
+import { cn } from '@/utils/helpers';
+
+
+export const FAQ = () => {
+
+  if(!faq) return null;
+
+  const renderContent = useCallback(() => (
+    <>
+      {faq.map((item) => (
+        <Accordion 
+          key={item.id} 
+          className={cn("border-primary rounded-[6px] border-solid border-[0.3rem]")}
+          question={item.question} 
+          answer={item.answer} 
+        />
+      ))}
+    </>
+  ), [faq]);
+
+  return (
+    <>
+      {renderContent()}
+    </>
+  );
+}
