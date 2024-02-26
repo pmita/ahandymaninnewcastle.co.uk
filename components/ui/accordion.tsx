@@ -1,6 +1,7 @@
 import * as React from "react"
 // UTILS
 import { cn } from '@/utils/helpers';
+import { MinusSymbolSVG, PlusSymbolSVG } from "../SVGs";
 
 
 interface IAccordionItem extends React.HTMLAttributes<HTMLDivElement> {
@@ -33,9 +34,10 @@ export const Accordion = React.forwardRef<HTMLDivElement, IAccordion>(({ classNa
     >
       <AccordionTitle 
         onClick={onClick} 
-        className={cn("border-solid border-primary")}
+        className={cn("border-solid border-primary flex flex-row justify-between items-center cursor-pointer")}
       >
         <h2>{question}</h2>
+        {isOpen ? <MinusSymbolSVG width={40} height={40} fill="#1E1E1E"/> : <PlusSymbolSVG width={40} height={40} fill="#1E1E1E"/>}
       </AccordionTitle>
       <AccordionContent 
         className={cn("bg-alternate text-secondary", isOpen ? "block" : "hidden")}

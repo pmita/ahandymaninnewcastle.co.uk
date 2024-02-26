@@ -20,7 +20,7 @@ export const FAQ = () => {
       {faq.map((item) => (
         <Accordion 
           key={item.id} 
-          className={cn("border-primary border-solid border-b-[0.3rem]")}
+          className={cn("border-primary border-solid border-[0.3rem]")}
           question={item.question} 
           answer={item.answer} 
         />
