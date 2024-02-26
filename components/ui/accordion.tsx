@@ -38,7 +38,7 @@ export const Accordion = React.forwardRef<HTMLDivElement, IAccordion>(({ classNa
         <h2>{question}</h2>
       </AccordionTitle>
       <AccordionContent 
-        className={cn("bg-primary text-secondary", isOpen ? "block" : "hidden")}
+        className={cn("bg-alternate text-secondary", isOpen ? "block" : "hidden")}
       >
         {answer}
       </AccordionContent>
