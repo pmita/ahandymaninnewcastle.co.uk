@@ -11,9 +11,10 @@ import { cn } from '@/utils/helpers';
 
 
 export const FAQ = () => {
-
+  // EARLY EXIT
   if(!faq) return null;
 
+  // FUNCTIONS
   const renderContent = useCallback(() => (
     <>
       {faq.map((item) => (
