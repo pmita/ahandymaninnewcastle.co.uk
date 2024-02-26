@@ -13,7 +13,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 // UTILS
 import { cn } from "@/utils/helpers";
-import { DrillAndWrenchSVG, PaintBrushSVG, TillingSVG } from "@/components/SVGs";
+import { DrillAndWrenchSVG, FacebookSVG, InstagramSVG, PaintBrushSVG, TillingSVG } from "@/components/SVGs";
 import { FAQ } from "@/components/faq";
 
 export default function Home() {
@@ -83,7 +83,21 @@ export default function Home() {
           >
             Follow us on social media
           </BannerTitle>
-          <BannerDescription className="text-md font-roboto font-bold text-secondary ">
+          <BannerDescription className="text-md font-roboto font-bold text-secondary">
+            <div className="text-center text-secondary flex justify-center gap-2.5">
+              <Link 
+                href="/showcase"
+                className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
+              >
+                <InstagramSVG width={24} height={24} fill="#ffffff" />
+              </Link>
+              <Link 
+                href="/showcase"
+                className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
+              >
+                <FacebookSVG width={24} height={24} fill="#ffffff" />
+              </Link>
+            </div>
             <div className="text-center text-secondary flex justify-center gap-5">
               <Link 
                 href="/showcase"
