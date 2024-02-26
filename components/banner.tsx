@@ -13,11 +13,11 @@ export const bannerVariants = cva(
         center: "flex justify-center items-center",
       },
       size: {
-        default: "h-[50vh]",
-        quarter: "h-[25vh]",
-        half: "h-[50vh]",
-        threeQuarters: "h-[75vh]",
-        full: "h-[100vh]",
+        default: "min-h-[50dvh]",
+        quarter: "min-h-[25dvh]",
+        half: "min-h-[50dvh]",
+        threeQuarters: "min-h-[75dvh]",
+        full: "min-h-[100dvh]",
       },
     },
     defaultVariants: {
