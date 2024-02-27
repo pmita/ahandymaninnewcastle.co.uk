@@ -18,9 +18,39 @@ export default async function ShowcasePage() {
 
   console.log(projects)
   return (
-    <main className="grid place-content-center">
+    <main className="container grid place-content-center pt-10 px-10">
       <h2 className="font-font font-poppins text-xl text-primary text-center">Some of our Work</h2>
-      <section className="grid grid-cols-1 gap-10 mx-0 my-4 p-4 justify-center">
+      <section className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
+        {projects && projects.map((project, index) => (
+          <Link href={project?._raw.flattenedPath} key={project?._raw.flattenedPath}>
+            <Card key={index} className="border-solid border-alternate border-[0.3rem]">
+              <CardHeader>
+                <h3 className="text-lg text-primary font-bold font-poppins">{project?.title}</h3>
+                <p className="text-primary font-roboto">{project?.description}</p>
+              </CardHeader>
+            </Card>
+          </Link>
+        ))}
+        {projects && projects.map((project, index) => (
+          <Link href={project?._raw.flattenedPath} key={project?._raw.flattenedPath}>
+            <Card key={index} className="border-solid border-alternate border-[0.3rem]">
+              <CardHeader>
+                <h3 className="text-lg text-primary font-bold font-poppins">{project?.title}</h3>
+                <p className="text-primary font-roboto">{project?.description}</p>
+              </CardHeader>
+            </Card>
+          </Link>
+        ))}
+        {projects && projects.map((project, index) => (
+          <Link href={project?._raw.flattenedPath} key={project?._raw.flattenedPath}>
+            <Card key={index} className="border-solid border-alternate border-[0.3rem]">
+              <CardHeader>
+                <h3 className="text-lg text-primary font-bold font-poppins">{project?.title}</h3>
+                <p className="text-primary font-roboto">{project?.description}</p>
+              </CardHeader>
+            </Card>
+          </Link>
+        ))}
         {projects && projects.map((project, index) => (
           <Link href={project?._raw.flattenedPath} key={project?._raw.flattenedPath}>
             <Card key={index} className="border-solid border-alternate border-[0.3rem]">
