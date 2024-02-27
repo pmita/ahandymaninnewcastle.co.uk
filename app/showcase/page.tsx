@@ -1,8 +1,10 @@
 // NEXT
 import { type Metadata } from "next";
+import Link from "next/link";
 // PACKAGES
 import { allProjects } from "@/.contentlayer/generated";
 import { compareDesc } from "date-fns";
+import { Card, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://example.com/showcase'),
@@ -14,10 +16,22 @@ export default async function ShowcasePage() {
   // SERVER LAND
   const projects = allProjects.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
+  console.log(projects)
   return (
     <main className="grid place-content-center">
       <h2 className="font-font font-poppins text-xl text-primary text-center">Some of our Work</h2>
-      {projects && (<h1>We have projects to showcase</h1>)}
+      <section className="grid grid-cols-1 gap-10 mx-0 my-4 p-4 justify-center">
+        {projects && projects.map((project, index) => (
+          <Link href={project?._raw.flattenedPath} key={project?._raw.flattenedPath}>
+            <Card key={index} className="border-solid border-alternate border-[0.3rem]">
+              <CardHeader>
+                <h3 className="text-lg text-primary font-bold font-poppins">{project?.title}</h3>
+                <p className="text-primary font-roboto">{project?.description}</p>
+              </CardHeader>
+            </Card>
+          </Link>
+        ))}
+      </section>
     </main>
   )
 }
