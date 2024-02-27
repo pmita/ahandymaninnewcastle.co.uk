@@ -8,7 +8,7 @@ export const Category = defineNestedType(() => ({
   fields: {
     name: {
       type: "string",
-      description: "Potential prject types",
+      description: "Potential project types",
       variant: {
         type: "enum",
         options: ["painting", "tilling", "miscellaneous"],
@@ -37,7 +37,7 @@ export const Project = defineDocumentType(() => ({
     date: {
       type: "date",
       description: "The date the project was published",
-      require: true,
+      required: true,
     },
     categories: {
       type: "list",
