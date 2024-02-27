@@ -1,7 +1,14 @@
-
+// NEXT
+import { type Metadata } from "next";
 // PACKAGES
 import { allProjects } from "@/.contentlayer/generated";
 import { compareDesc } from "date-fns";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://example.com/showcase'),
+  title: 'Showcase Page',
+  description: 'Showcasing some of our projects across various categories such as painting, tilling, and miscellaneous',
+}
 
 export default async function ShowcasePage() {
   // SERVER LAND
