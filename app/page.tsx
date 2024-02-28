@@ -11,10 +11,10 @@ import {
 } from "@/components/banner";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { DrillAndWrenchSVG, PaintBrushSVG, TillingSVG } from "@/components/SVGs";
+import { FAQ } from "./_component/faq";
 // UTILS
 import { cn } from "@/utils/helpers";
-import { DrillAndWrenchSVG, FacebookSVG, InstagramSVG, PaintBrushSVG, TillingSVG } from "@/components/SVGs";
-import { FAQ } from "@/components/faq";
 
 export default function Home() {
   return (
