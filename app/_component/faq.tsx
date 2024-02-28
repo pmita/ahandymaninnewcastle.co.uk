@@ -3,7 +3,7 @@
 // REACT
 import { useCallback } from "react";
 // COMPONENTS
-import { Accordion } from "./ui/accordion";
+import { Accordion } from "../../components/ui/accordion";
 // CONFIG
 import { faq } from '@/config/faq';
 // UTILS

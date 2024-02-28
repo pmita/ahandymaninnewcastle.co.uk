@@ -1,9 +1,9 @@
 "use client"
 
 // COMPONENTS
-import { InputField } from "@/inputs/input-field";
-import TextAreaField from "@/inputs/text-area";
-import { Button, buttonVariants } from "./ui/button";
+import { InputField } from "@/components/input-field";
+import TextAreaField from "@/components/text-area";
+import { Button, buttonVariants } from "../../../components/ui/button";
 // HOOKS
 import { useFirestore } from "@/hooks/useFirestore";
 // PACKAGES
