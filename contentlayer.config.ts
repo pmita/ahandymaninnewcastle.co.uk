@@ -23,7 +23,7 @@ export const Category = defineNestedType(() => ({
 export const Project = defineDocumentType(() => ({
   name: "Project",
   filePathPattern: "showcase/**/*.mdx",
-  bodyType: "mdx",
+  contentType: "mdx",
   fields: {
     title: {
       type: "string",
