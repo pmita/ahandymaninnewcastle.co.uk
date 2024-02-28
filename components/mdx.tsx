@@ -124,7 +124,7 @@ const components = {
       {...props}
     />
   ),
-  Image
+  Image: (props: any) => <Image {...props} />,
 }
 
 interface MDXProps {
@@ -136,12 +136,12 @@ export function Mdx({ code, className }: MDXProps) {
   const Component = useMDXComponent(code);
 
   return (
-    <div className={cn(
-        "flex flex-col justify-center items-start gap-4",
+    <article className={cn(
+        "container relative max-w-3xl py-6 lg:py-10",
         className
       )}
     >
       <Component components={components} />
-    </div>
+    </article>
   )
 }
