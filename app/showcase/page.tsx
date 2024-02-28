@@ -16,7 +16,6 @@ export default async function ShowcasePage() {
   // SERVER LAND
   const projects = allProjects.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
-  console.log(projects)
   return (
     <main className="container flex flex-col justify-start items-center pt-10 px-10 min-h-[90dvh]">
       <h2 className="font-font font-poppins text-xl text-primary text-center">Some of our Work</h2>
