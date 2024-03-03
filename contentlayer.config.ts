@@ -57,14 +57,38 @@ export const Project = defineDocumentType(() => ({
     slugAsParams: {
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.split('/').slice(1).join('/'),
-  }
+    }
+  },
+}))
+
+// Define privacy policy markdown structure with types
+export const PrivacyPolicy = defineDocumentType(() => ({
+  name: "PrivacyPolicy",
+  filePathPattern: "privacy-policy/**/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      description: "The title of the privacy policy",
+      required: true,
+    },
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => `/${doc._raw.flattenedPath}`,
+    }, 
+    slugAsParams: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.split('/').slice(1).join('/'),
+    }
   },
 }))
 
 // Build and export content in /content folder
 export default makeSource({
   contentDirPath: './content',
-  documentTypes: [Project],
+  documentTypes: [Project, PrivacyPolicy],
   mdx: {
     rehypePlugins: [
       rehypeSlug,
