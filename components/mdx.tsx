@@ -114,7 +114,6 @@ const components = {
     />
   ),
   img: ({ className, alt, ...props}: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    // eslint-disable-next-line @next/next/no-img-element
     <img
       className={cn(
         "rounded border",
@@ -137,7 +136,7 @@ export function Mdx({ code, className }: MDXProps) {
 
   return (
     <article className={cn(
-        "container relative max-w-3xl py-6 lg:py-10",
+        "relative max-w-3xl text-justify",
         className
       )}
     >
