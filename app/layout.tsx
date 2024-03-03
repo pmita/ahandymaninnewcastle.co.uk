@@ -73,6 +73,12 @@ export default function RootLayout({
                 >
                   Contact
                 </Link>
+                <Link 
+                  href="/privacy-policy"
+                  className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
+                >
+                  Privacy Policy
+                </Link>
               </div>
             </BannerDescription>
           </BannerHeader>
