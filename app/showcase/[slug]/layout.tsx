@@ -19,7 +19,6 @@ export default function CourseChapterLayout({ children, params }: CourseChapterL
   // SERVER LAND
   const project = allProjects.find((project) => project.slugAsParams === params.slug);
 
-  console.log(project?.categories);
   return (
     <section className="container flex flex-wrap flex-row justify-center items-stretch w-full p-5 pb-0">
       <aside className="flex-[1_1_300px] self-stretch flex flex-col flex-start items-between gap-2 w-full order-1 lg:order-2 min-h-auto p-5">
