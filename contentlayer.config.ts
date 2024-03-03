@@ -6,15 +6,11 @@ import rehypeSlug from "rehype-slug"
 export const Category = defineNestedType(() => ({
   name: "Category",
   fields: {
-    name: {
-      type: "string",
-      description: "Potential project types",
-      variant: {
-        type: "enum",
-        options: ["painting", "tilling", "miscellaneous"],
-        default: "miscellaneous"
-      }
-    },
+    variant: {
+      type: "enum",
+      options: ["painting", "tilling", "miscellaneous"],
+      default: "miscellaneous"
+    }
   },
 
 }))
