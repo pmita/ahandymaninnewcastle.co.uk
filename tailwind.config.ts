@@ -13,6 +13,7 @@ const config: Config = {
         secondary: 'rgb(var(--secondary))',
         alternate : 'rgb(var(--alternate))',
         danger: 'rgb(var(--danger))',
+        muted: 'rgb(var(--muted))',
       },
 			fontFamily: {
         roboto: ['var(--font-roboto)'],
