@@ -32,7 +32,7 @@ export default async function ShowcasePage() {
             <Skeleton className="w-full h-full" />
           </>
         }>
-          {projects && projects.map((project) => (
+          {projects.map((project) => (
             <Link href={project?._raw.flattenedPath} key={project?._raw.flattenedPath} className="w-full h-full">
               <Card className="duration-500 hover:scale-105 hover:shadow-xl w-full h-full card-parent">
                 <CardHeader className="p-0 w-full h-full overflow-hidden">
