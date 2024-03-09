@@ -6,7 +6,6 @@ import Image from "next/image";
 import { Suspense } from "react";
 // COMPONENTS
 import { Card, CardHeader, CardFooter } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
 // PACKAGES
 import { allProjects } from "@/.contentlayer/generated";
 import { compareDesc } from "date-fns";
@@ -25,13 +24,7 @@ export default async function ShowcasePage() {
     <main className="container flex flex-col justify-start items-center pt-10 px-10 min-h-[90dvh]">
       <h2 className="font-font font-poppins text-xl text-primary text-center">Some of our Work</h2>
       <section className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 auto-rows-[500px] justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
-        <Suspense fallback={
-          <>
-            <Skeleton className="w-full h-full" />
-            <Skeleton className="w-full h-full" />
-            <Skeleton className="w-full h-full" />
-          </>
-        }>
+        <Suspense fallback={<div>Loading...</div>}>
           {projects.map((project) => (
             <Link href={project?._raw.flattenedPath} key={project?._raw.flattenedPath} className="w-full h-full">
               <Card className="duration-500 hover:scale-105 hover:shadow-xl w-full h-full card-parent">
