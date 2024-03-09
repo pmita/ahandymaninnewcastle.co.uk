@@ -24,7 +24,7 @@ export const Accordion = React.forwardRef<HTMLDivElement, IAccordion>(({ classNa
   }, [isOpen, setIsOpen]);
 
   return (
-    <div
+    <section
       ref={ref}
       className={cn(
         "bg-secondary text-primary shadow-sm",
@@ -33,18 +33,25 @@ export const Accordion = React.forwardRef<HTMLDivElement, IAccordion>(({ classNa
       {...props}
     >
       <AccordionTitle 
-        onClick={onClick} 
-        className={cn("border-solid border-primary flex flex-row justify-between items-center cursor-pointer")}
+        className={cn("border-solid border-primary")}
       >
-        <h2>{question}</h2>
-        {isOpen ? <MinusSymbolSVG width={40} height={40} fill="#1E1E1E"/> : <PlusSymbolSVG width={40} height={40} fill="#1E1E1E"/>}
+        <button
+          aria-expanded={isOpen}
+          aria-controls="accordion-content"
+          onClick={onClick}
+          className="flex flex-row justify-between items-center w-full"
+        >
+          <h2 className="text-poppins">{question}</h2>
+          {isOpen ? <MinusSymbolSVG width={40} height={40} fill="#1E1E1E"/> : <PlusSymbolSVG width={40} height={40} fill="#1E1E1E"/>}
+        </button>
       </AccordionTitle>
       <AccordionContent 
         className={cn("bg-alternate text-secondary", isOpen ? "block" : "hidden")}
+        id="accordion-content"
       >
         {answer}
       </AccordionContent>
-    </div>
+    </section>
   );
 })
 Accordion.displayName = "Accordion";
@@ -63,9 +70,9 @@ export const AccordionTitle = React.forwardRef<HTMLDivElement, IAccordionItem>((
 })
 AccordionTitle.displayName = "AccordionTitle";
 
-export const AccordionContent = React.forwardRef<HTMLHeadingElement, IAccordionItem>(({ className, ...props}, ref) => {
+export const AccordionContent = React.forwardRef<HTMLDivElement, IAccordionItem>(({ className, ...props}, ref) => {
   return (
-    <h2
+    <div
       ref={ref}
       className={cn(
         "flex flex-col gap-5 p-6 text-sm text-primary font-bold",
