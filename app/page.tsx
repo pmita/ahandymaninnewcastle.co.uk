@@ -13,6 +13,8 @@ import { buttonVariants } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { DrillAndWrenchSVG, PaintBrushSVG, TillingSVG } from "@/components/SVGs";
 import { FAQ } from "./_components/faq";
+// CONFIG
+import { sellingPoints } from "@/config/selling-points";
 // UTILS
 import { cn } from "@/utils/helpers";
 
@@ -50,22 +52,28 @@ export default function Home() {
           <Card className={cn("border-solid border-primary border-[0.3rem]")}>
             <CardHeader>
               <PaintBrushSVG width={48} height={48} fill="black"/>
-              <CardTitle className="text-lg text-primary font-bold font-poppins">Painting</CardTitle>
-              <CardDescription className="text-primary font-roboto">Our painting services are second to none, we take pride in our work and ensure that our customers are satisfied</CardDescription>
+              <CardTitle className="text-lg text-primary font-bold font-poppins">{sellingPoints[0].title}</CardTitle>
+              <CardDescription className="text-primary font-roboto">
+                {sellingPoints[0].description}
+              </CardDescription>
             </ CardHeader>
           </Card>
           <Card className={cn("border-solid border-primary border-[0.3rem]")}>
             <CardHeader>
               <TillingSVG width={48} height={48} fill="black"/>
-              <CardTitle className="text-lg text-primary font-bold font-poppins">Tilling</CardTitle>
-              <CardDescription className="text-primary font-roboto">Our painting services are second to none, we take pride in our work and ensure that our customers are satisfied</CardDescription>
+              <CardTitle className="text-lg text-primary font-bold font-poppins">{sellingPoints[1].title}</CardTitle>
+              <CardDescription className="text-primary font-roboto">
+              {sellingPoints[1].description}
+              </CardDescription>
             </ CardHeader>
           </Card>
           <Card className={cn("border-solid border-primary border-[0.3rem]")}>
             <CardHeader>
               <DrillAndWrenchSVG width={48} height={48} fill="black"/>
-              <CardTitle className="text-lg text-primary font-bold font-poppins">Miscelleneous</CardTitle>
-              <CardDescription className="text-primary font-roboto">Our painting services are second to none, we take pride in our work and ensure that our customers are satisfied</CardDescription>
+              <CardTitle className="text-lg text-primary font-bold font-poppins">{sellingPoints[2].title}</CardTitle>
+              <CardDescription className="text-primary font-roboto">
+              {sellingPoints[2].description}
+              </CardDescription>
             </ CardHeader>
           </Card>
         </div>
