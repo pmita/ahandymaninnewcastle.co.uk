@@ -39,8 +39,8 @@ export default async function ProjectPage({ params }: ProjectPageParams) {
   if (!project) return null;
 
   return (
-    <main className="container flex flex-col justify-center items-center min-h-[90dvh]">
+    <section className="container flex flex-col justify-center items-center min-h-[90dvh]">
       <Mdx code={project.body.code} />
-    </main>
+    </section>
   )
 }

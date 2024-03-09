@@ -30,9 +30,9 @@ export default function CourseChapterLayout({ children, params }: CourseChapterL
         </Link>
         <h2 className="font-poppins font-bold text-center text-secondary">{project?.title}</h2>
       </header>
-      <section className="container p-5 self-stretch w-full">
+      <main className="container p-5 self-stretch w-full">
         {children}
-      </section>
+      </main>
     </section>
   );
 }
