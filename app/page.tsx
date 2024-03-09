@@ -12,7 +12,7 @@ import {
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { DrillAndWrenchSVG, PaintBrushSVG, TillingSVG } from "@/components/SVGs";
-import { FAQ } from "./_component/faq";
+import { FAQ } from "./_components/faq";
 // UTILS
 import { cn } from "@/utils/helpers";
 
