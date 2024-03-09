@@ -38,7 +38,7 @@ export default function RootLayout({
       >
         <NavMenu />
         {children}
-        <footer className={cn(bannerVariants({ variant: "center", size: "quarter", className: "flex-col bg-alternate rounded-t-[25px]" }))}>
+        <footer className={cn(bannerVariants({ variant: "center", size: "quarter", className: "flex-col bg-alternate" }))}>
           <BannerHeader className="text-center">
             <BannerTitle 
               className="text-xl font-poppins font-bold text-secondary"
@@ -72,6 +72,12 @@ export default function RootLayout({
                   className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
                 >
                   Contact
+                </Link>
+                <Link 
+                  href="/privacy-policy"
+                  className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
+                >
+                  Privacy Policy
                 </Link>
               </div>
             </BannerDescription>

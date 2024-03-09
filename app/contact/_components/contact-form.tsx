@@ -33,7 +33,6 @@ export const ContactForm = () => {
 
   // EVENTS
   const onSubmit: SubmitHandler<IContactForm> = async ({ fullName, email, mobile, location, additionalInfo }: IContactForm) => {
-    console.log({ fullName, email, mobile, location, additionalInfo });
     await addDocument(
       'queries', {
         fullName,

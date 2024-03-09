@@ -9,7 +9,7 @@ interface IContactPage {
 
 export default function ContactPageLayout({children}: IContactPage) {
   return (
-    <section className="container min-h-[90dvh] w-full flex justify-center items-stretch">
+    <div className="container min-h-[90dvh] w-full flex justify-center items-stretch">
       <div className="flex-1 flex justify-center items-stretch backdrop-banner">
         <Image
           src="/images/banner-md.jpg"
@@ -24,9 +24,9 @@ export default function ContactPageLayout({children}: IContactPage) {
           priority
         />
       </div>
-      <div className="flex-1 grid place-content-center z-10">
+      <main className="flex-1 grid place-content-center z-10">
           {children}
-      </div>
-    </section>
+      </main>
+    </div>
   );
 }
