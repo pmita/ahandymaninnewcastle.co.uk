@@ -48,7 +48,7 @@ export default function Home() {
 
       <section className={cn(bannerVariants({ variant: "center", size: "half", className: "flex-col items-stretch gap-10 pt-10 sm:pt-25" }))}>
         <h2 className="font-font font-poppins text-xl text-primary text-center">Our Expertise</h2>
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,300px))] auto-rows-[350px] gap-8 mx-0 my-4 p-4 justify-center">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,300px))] auto-rows-[420px] gap-8 mx-0 my-4 p-4 justify-center">
           <Card className={cn("border-solid border-primary border-[0.3rem]")}>
             <CardHeader>
               <PaintBrushSVG width={48} height={48} fill="black"/>
