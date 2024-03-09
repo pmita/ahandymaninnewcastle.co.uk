@@ -21,9 +21,9 @@ export const Card = React.forwardRef<HTMLDivElement, ICard>(({ className, ...pro
 })
 Card.displayName = "Card";
 
-export const CardHeader = React.forwardRef<HTMLDivElement, ICard>(({ className, ...props}, ref) => {
+export const CardHeader = React.forwardRef<HTMLHeadingElement, ICard>(({ className, ...props}, ref) => {
   return (
-    <div
+    <header
       ref={ref}
       className={cn(
         "flex flex-col gap-5 p-6",
