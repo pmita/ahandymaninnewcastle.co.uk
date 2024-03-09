@@ -37,6 +37,8 @@ export default async function ShowcasePage() {
                     style={{ width: "100%", height: "auto" }}
                     objectFit="cover"
                     alt={'Project Image'}
+                    fill
+                    priority={true}
                   />
                 </CardHeader>
                 <CardFooter className="flex flex-col justify-start items-center pt-5 gap-2.5 bg-secondary card-child">
