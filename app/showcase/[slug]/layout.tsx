@@ -1,11 +1,11 @@
 // NEXT
 import Link from "next/link";
 // LIBRARIES
-import { allProjects } from "contentlayer/generated";
 import { buttonVariants } from "@/components/ui/button";
+// CONTENTLAYER
+import { allProjects } from "contentlayer/generated";
 // UTILS
 import { cn } from "@/utils/helpers";
-import { Tag, tagVariants } from "@/components/ui/tag";
 
 interface CourseChapterLayoutProps {
   children: React.ReactNode;
@@ -20,21 +20,17 @@ export default function CourseChapterLayout({ children, params }: CourseChapterL
   const project = allProjects.find((project) => project.slugAsParams === params.slug);
 
   return (
-    <section className="container flex flex-wrap flex-row justify-center items-stretch w-full p-5 pb-0">
-      <aside className="flex-[1_1_300px] self-stretch flex flex-col flex-start items-between gap-2 w-full order-1 lg:order-2 min-h-auto p-5">
+    <section className="flex flex-wrap flex-row justify-center items-stretch w-full px-5">
+      <header className="container w-full min-h-[5dvh] bg-alternate flex flex-row justify-start items-center gap-5 p-5 sticky top-0 z-50">
         <Link 
           href='/showcase'
-          className={cn(buttonVariants({ variant: 'primary', size: "sm" }))}  
+          className={cn(buttonVariants({ variant: 'primary', size: "sm" }), "w-[140px]")}  
         >
           Go Back
         </Link>
-        {project?.categories && project?.categories?.map((category, index) => (
-          <Tag className={cn(tagVariants({ variant: 'alternate', size: "lg" }))} key={index}>
-            {`# ` + category.variant}
-          </Tag>
-        ))}
-      </aside>
-      <section className="p-5 flex-[4_1_670px] self-stretch w-full order-2 lg:order-1">
+        <h2 className="font-poppins font-bold text-center text-secondary">{project?.title}</h2>
+      </header>
+      <section className="container p-5 self-stretch w-full">
         {children}
       </section>
     </section>
