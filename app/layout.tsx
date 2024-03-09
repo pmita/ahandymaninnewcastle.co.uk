@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 // COMPONENTS
-import { NavMenu } from "@/components/nav-menu";
+import { NavMenu } from "./_components/nav-menu";
 import { 
   BannerDescription, 
   BannerFooter, 
