@@ -43,10 +43,11 @@ export default function RootLayout({
             <BannerTitle 
               className="text-xl font-poppins font-bold text-secondary"
             >
-              Follow us on social media
+              Our Links
             </BannerTitle>
             <BannerDescription className="text-md font-roboto font-bold text-secondary">
-              <div className="text-center text-secondary flex justify-center gap-2.5">
+              {/* Remember to add these back once social media links are setup */}
+              {/* <div className="text-center text-secondary flex justify-center gap-2.5">
                 <Link 
                   href="/showcase"
                   className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
@@ -59,7 +60,7 @@ export default function RootLayout({
                 >
                   <FacebookSVG width={24} height={24} fill="#ffffff" />
                 </Link>
-              </div>
+              </div> */}
               <div className="text-center text-secondary flex justify-center gap-5">
                 <Link 
                   href="/showcase"

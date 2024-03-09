@@ -1,5 +1,7 @@
 export const revalidate = 1200;
 
+// REACT
+import { Suspense } from "react";
 // PACKAGES
 import { allProjects } from "contentlayer/generated";
 // DATA
@@ -40,7 +42,9 @@ export default async function ProjectPage({ params }: ProjectPageParams) {
 
   return (
     <section className="container flex flex-col justify-center items-center min-h-[90dvh]">
-      <Mdx code={project.body.code} />
+      <Suspense fallback={<p>Loading...</p>}>
+        <Mdx code={project.body.code} />
+      </Suspense>
     </section>
   )
 }

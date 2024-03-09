@@ -7,6 +7,7 @@
   --secondary: 255 255 255; /* white */
   --alternate: 113 73 230; /* purple */
   --danger: 243 78 78; /* red */
+  --muted: 241 245 249; /* gray */
 }
 
 .container{
