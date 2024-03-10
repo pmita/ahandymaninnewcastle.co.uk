@@ -9,7 +9,7 @@ import { useFirestore } from "@/hooks/useFirestore";
 // PACKAGES
 import { type SubmitHandler, useForm } from "react-hook-form";
 // CONFIG
-import { contactForm, contactTextAreForm } from "@/config/forms";
+import { contactForm, contactTextAreForm, honeyPotInput } from "@/config/forms";
 // UTILS
 import { cn } from "@/utils/helpers";
 // TYPES
@@ -27,21 +27,25 @@ export const ContactForm = () => {
       email: '',
       mobile: '',
       location: '',
-      additionalInfo: ''
+      additionalInfo: '',
+      goodToKnow: ''
     }
   })
 
   // EVENTS
-  const onSubmit: SubmitHandler<IContactForm> = async ({ fullName, email, mobile, location, additionalInfo }: IContactForm) => {
-    await addDocument(
-      'queries', {
-        fullName,
-        email,
-        mobile,
-        location,
-        additionalInfo
-      }
-    )
+  const onSubmit: SubmitHandler<IContactForm> = async ({ fullName, email, mobile, location, additionalInfo, goodToKnow }: IContactForm) => {
+    // Check if the honeypot input is filled before sbubmitting the form in the db
+    if (!goodToKnow) {
+      await addDocument(
+        'queries', {
+          fullName,
+          email,
+          mobile,
+          location,
+          additionalInfo
+        }
+      )
+    }
 
     reset();
   }
@@ -60,6 +64,14 @@ export const ContactForm = () => {
           error={errors[input.name as keyof ContactFormErrors]?.message}
         />
       ))}
+
+      <InputField
+        className="hidden"
+        name={honeyPotInput.name}
+        type={honeyPotInput.type}
+        placeholder={honeyPotInput.placeholder}
+        register={register}
+      />
 
       {contactTextAreForm && (
         <TextAreaField

@@ -23,6 +23,7 @@ export interface IFormField {
     pattern?: { value: RegExp; message: string };
   }
   error?: string; 
+  className?: string;
 }
 
 export interface IContactForm {
@@ -31,6 +32,7 @@ export interface IContactForm {
   mobile: string;
   location: string;
   additionalInfo: string;
+  goodToKnow: string;
 }
 
 export type ContactFormErrors = {

@@ -1,5 +1,8 @@
 "use client"
 
+// UTILS
+import { cn } from '@/utils/helpers';
+// TYPES
 import { IFormField } from '@/types';
 
 export function InputField({
@@ -10,10 +13,11 @@ export function InputField({
   type,
   placeholder,
   error,
+  className,
   ...rest
 }: IFormField) : JSX.Element {
   return (
-    <div className="w-full flex flex-col justify-center items-start gap-5">
+    <div className={cn("w-full flex flex-col justify-center items-start gap-5", className)}>
       {label && (
         <label htmlFor={name}>
           {label}
