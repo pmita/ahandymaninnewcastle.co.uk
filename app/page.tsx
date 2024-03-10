@@ -79,7 +79,7 @@ export default function Home() {
         </div>
       </section>
       
-      <section className={cn(bannerVariants({ variant: "center", size: "full", className: "flex-col items-stretch gap-2.5" }))}>
+      <section className={cn(bannerVariants({ variant: "center", size: "full", className: "flex-col items-stretch gap-2.5 py-5" }))}>
         <h2 className="font-font font-poppins text-xl text-alternate">FAQs</h2>
         <FAQ />
       </section>

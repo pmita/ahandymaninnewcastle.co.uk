@@ -10,7 +10,7 @@ interface IContactPage {
 export default function ContactPageLayout({children}: IContactPage) {
   return (
     <div className="container min-h-[90dvh] w-full flex justify-center items-stretch py-5">
-      <div className="flex-1 flex justify-center items-stretch backdrop-banner">
+      <div className="flex-1 hidden justify-center items-stretch backdrop-banner sm:flex">
         <Image
           src="/images/banner-md.jpg"
           alt="painting brush against a white wall background"
@@ -24,8 +24,8 @@ export default function ContactPageLayout({children}: IContactPage) {
           priority
         />
       </div>
-      <main className="flex-1 grid place-content-center z-10">
-          {children}
+      <main className="flex-1 self-stretch grid place-content-center z-10">
+        {children}
       </main>
     </div>
   );

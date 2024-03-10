@@ -1,3 +1,10 @@
+export const honeyPotInput = {
+  id: 1,
+  name: 'goodToKnow',
+  type: 'text',
+  placeholder: 'Good to know value',
+}
+
 export const contactForm = [
   {
     id: 1,
@@ -23,10 +30,6 @@ export const contactForm = [
     placeholder: 'Email',
     validationSchema: {
       required: "Email is required",
-      pattern: {
-        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-        message: "Invalid email address",
-      }
     }
   },
   {

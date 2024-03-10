@@ -41,8 +41,10 @@ export const Accordion = React.forwardRef<HTMLDivElement, IAccordion>(({ classNa
           onClick={onClick}
           className="flex flex-row justify-between items-center w-full"
         >
-          <h2 className="text-poppins">{question}</h2>
-          {isOpen ? <MinusSymbolSVG width={40} height={40} fill="#1E1E1E"/> : <PlusSymbolSVG width={40} height={40} fill="#1E1E1E"/>}
+          <h4 className="text-poppins text-left">{question}</h4>
+          <span>
+            {isOpen ? <MinusSymbolSVG width={40} height={40} fill="#1E1E1E"/> : <PlusSymbolSVG width={40} height={40} fill="#1E1E1E"/>}
+          </span>
         </button>
       </AccordionTitle>
       <AccordionContent 
@@ -62,7 +64,7 @@ export const AccordionTitle = React.forwardRef<HTMLDivElement, IAccordionItem>((
     <div
       ref={ref}
       className={cn(
-        "flex flex-col gap-5 p-6",
+        "flex flex-col gap-5 p-4 sm:p-6",
         className
       )}
       {...props}
@@ -76,7 +78,7 @@ export const AccordionContent = React.forwardRef<HTMLDivElement, IAccordionItem>
     <div
       ref={ref}
       className={cn(
-        "flex flex-col gap-5 p-6 text-sm text-primary font-bold",
+        "flex flex-col gap-5 p-4 sm:p-6 text-sm text-primary font-bold",
         className
       )}
       {...props}
