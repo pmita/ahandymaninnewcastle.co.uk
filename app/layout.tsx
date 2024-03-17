@@ -9,7 +9,7 @@ import {
   BannerTitle, 
   bannerVariants 
 } from "@/components/banner";
-import { InstagramSVG, FacebookSVG } from "@/components/SVGs";
+// import { InstagramSVG, FacebookSVG } from "@/components/SVGs";
 // UTILS
 import { roboto, poppins } from "@/utils/fonts";
 import { cn } from "@/utils/helpers";
