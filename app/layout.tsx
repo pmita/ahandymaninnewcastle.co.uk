@@ -28,6 +28,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16498089938">
+        </script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', ${'${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}'});
+          `}
+        </script>
+      </head>
       <body 
         className={cn(
           "min-h-screen bg-secondary font-roboto antialiased",
