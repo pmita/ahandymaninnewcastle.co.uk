@@ -2,8 +2,6 @@
 import { type Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-// REACT
-import { Suspense } from "react";
 // COMPONENTS
 import { Card, CardHeader, CardFooter } from "@/components/ui/card";
 // PACKAGES
@@ -29,14 +27,14 @@ export default async function ProjectsPage() {
                 <Card className="duration-500 hover:scale-105 hover:shadow-xl w-full h-full">
                   <CardHeader className="p-0 w-full h-[60%] sm:h-[70%] overflow-hidden">
                     <Image
-                      src="/images/banner-md.jpg"
+                      src={project?.thumbnailImg ?? '/images/placeholder.jpg'}
                       width={0}
                       height={0}
                       sizes="100vw"
                       style={{ width: "100%", height: "auto" }}
                       objectFit="cover"
                       objectPosition="100% 50%"
-                      alt={'Project Image'}
+                      alt={project?.thumbnailImgAlt ?? 'Project Thumbnail'}
                     />
                   </CardHeader>
                   <CardFooter className="flex flex-col justify-start items-center h-[40%] sm:h-[30%] pt-5 gap-2.5 bg-secondary">
