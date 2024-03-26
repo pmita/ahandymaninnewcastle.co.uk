@@ -12,7 +12,6 @@ export const Category = defineNestedType(() => ({
       default: "miscellaneous"
     }
   },
-
 }))
 
 // Define project markdown structure with types
@@ -40,11 +39,11 @@ export const Project = defineDocumentType(() => ({
       of: Category,
       description: "The categories of the project",
     },
-    image: {
-      type: "image",
+    thumbnailImg: {
+      type: "string",
       description: "Project thumbnail image",
     },
-    imageAlt: {
+    thumbnailImgAlt: {
       type: "string",
       description: "Alt text for the project thumbnail image",
     },
