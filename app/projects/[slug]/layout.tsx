@@ -23,7 +23,7 @@ export default function CourseChapterLayout({ children, params }: CourseChapterL
     <section className="container flex flex-wrap flex-row justify-center items-stretch w-full">
       <header className="container min-h-[5dvh] bg-alternate flex flex-row justify-start items-center gap-5 p-5 sticky top-0 z-50">
         <Link 
-          href='/showcase'
+          href='/projects'
           className={cn(buttonVariants({ variant: 'primary', size: "sm" }), "min-w-[75px]")}  
         >
           Go Back

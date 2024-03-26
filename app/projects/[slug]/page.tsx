@@ -28,7 +28,7 @@ export const generateMetadata = ({ params }: ProjectPageParams) => {
   if (!project) return {};
 
   return {
-    metadataBase: `https://example.com/showcase/${project.slugAsParams}`,
+    metadataBase: `https://example.com/projects/${project.slugAsParams}`,
     title: project?.title,
     description: project?.description,
   }

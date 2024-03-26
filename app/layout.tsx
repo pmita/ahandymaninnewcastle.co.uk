@@ -62,13 +62,13 @@ export default function RootLayout({
               {/* Remember to add these back once social media links are setup */}
               {/* <div className="text-center text-secondary flex justify-center gap-2.5">
                 <Link 
-                  href="/showcase"
+                  href="/projects"
                   className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
                 >
                   <InstagramSVG width={24} height={24} fill="#ffffff" />
                 </Link>
                 <Link 
-                  href="/showcase"
+                  href="/projects"
                   className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
                 >
                   <FacebookSVG width={24} height={24} fill="#ffffff" />
@@ -76,10 +76,10 @@ export default function RootLayout({
               </div> */}
               <div className="text-center text-secondary flex justify-center gap-5">
                 <Link 
-                  href="/showcase"
+                  href="/projects"
                   className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
                 >
-                  Showcase
+                  Projects
                 </Link>
                 <Link 
                   href="/contact"

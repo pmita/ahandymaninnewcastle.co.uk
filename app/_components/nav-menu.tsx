@@ -13,10 +13,10 @@ export async function NavMenu() {
       <ul className="flex gap-4 pt-1.5 text-md lg:pt-0 lg:text-lg">
         <li className="lg:px-4">
           <Link 
-            href="/showcase" 
+            href="/projects" 
             className="text-primary font-semibold hover:text-alternate"
           >
-            Showcase
+            Projects
           </Link>
         </li>
         <li className="lg:pl-4">
