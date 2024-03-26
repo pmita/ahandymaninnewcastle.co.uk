@@ -18,7 +18,7 @@ export const Category = defineNestedType(() => ({
 // Define project markdown structure with types
 export const Project = defineDocumentType(() => ({
   name: "Project",
-  filePathPattern: "showcase/**/*.mdx",
+  filePathPattern: "projects/**/*.mdx",
   contentType: "mdx",
   fields: {
     title: {

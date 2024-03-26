@@ -38,7 +38,7 @@ export default function Home() {
             Get in touch
           </Link>
           <Link 
-            href="/showcase"
+            href="/projects"
             className={cn(buttonVariants({ variant: "alternateOutlined", size: "lg" }))}
           >
             Our work

@@ -11,12 +11,12 @@ import { allProjects } from "@/.contentlayer/generated";
 import { compareDesc } from "date-fns";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://example.com/showcase'),
-  title: 'Showcase Page',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://example.com/projects'),
+  title: 'Projects Page',
   description: 'Showcasing some of our projects across various categories such as painting, tilling, and miscellaneous',
 }
 
-export default async function ShowcasePage() {
+export default async function ProjectsPage() {
   // SERVER LAND
   const projects = allProjects.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 

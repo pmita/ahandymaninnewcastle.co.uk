@@ -2,7 +2,7 @@
 import { Card, CardFooter } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export default function ShowcasePageLoading() {
+export default function ProjectsPageLoading() {
   return (
     <main className="container flex flex-col justify-start items-center pt-10 px-10 min-h-[90dvh]">
       <h2 className="font-font font-poppins text-xl text-primary text-center">Some of our Work</h2>
