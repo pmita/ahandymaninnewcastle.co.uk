@@ -9,8 +9,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { bannerVariants } from "@/components/ui/banner";
 // CONFIG
 import { faq } from '@/config/faq';
+// UTILS
+import { cn } from "@/utils/helpers";
 
 const FaqItem = ({ question, answer }: { question: string, answer: string }) => (
   <Accordion type="single" collapsible className="w-full">
@@ -36,8 +39,9 @@ export const FaqSection = () => {
   ), [faq]);
 
   return (
-    <>
+    <section className={cn(bannerVariants({ variant: "center", size: "full", className: "flex-col items-stretch gap-2.5 py-5" }))}>
+      <h2 className="font-font font-poppins text-xl text-alternate">FAQs</h2>
       {renderContent()}
-    </>
+    </section>
   );
 }
