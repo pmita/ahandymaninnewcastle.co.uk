@@ -10,7 +10,7 @@ export type SVGPropType = {
 }
 
 // FORMS
-export interface IFormField {
+export interface IFieldWithLabel {
   name: string;
   label?: string;
   type?: string;
@@ -22,6 +22,7 @@ export interface IFormField {
     maxLength?: { value: number; message: string };
     pattern?: { value: RegExp; message: string };
   }
+  componentType?: string;
   error?: string; 
   className?: string;
 }
