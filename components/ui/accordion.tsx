@@ -1,88 +1,56 @@
+"use client"
 import * as React from "react"
 // UTILS
 import { cn } from '@/utils/helpers';
 import { MinusSymbolSVG, PlusSymbolSVG } from "../SVGs";
+import * as AccordionPrimitive from "@radix-ui/react-accordion"
 
+const Accordion = AccordionPrimitive.Root
 
-interface IAccordionItem extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string;
-}
+const AccordionItem = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
+>(({ className, ...props }, ref) => (
+  <AccordionPrimitive.Item
+    ref={ref}
+    className={cn("border-b", className)}
+    {...props}
+  />
+))
+AccordionItem.displayName = "AccordionItem"
 
-interface IAccordion extends React.HTMLAttributes<HTMLDivElement>, IAccordionItem {
-  question: string;
-  answer: string;
-}
-
-
-export const Accordion = React.forwardRef<HTMLDivElement, IAccordion>(({ className, question, answer, ...props}, ref) => {
-  // STATE & HOOKS
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  // EVENTS
-  const onClick = React.useCallback(() => {
-    setIsOpen(!isOpen);
-  }, [isOpen, setIsOpen]);
-
-  return (
-    <section
+const AccordionTrigger = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
+>(({ className, children, ...props }, ref) => (
+  <AccordionPrimitive.Header className="flex">
+    <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "bg-secondary text-primary shadow-sm",
+        "flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180",
         className
       )}
       {...props}
     >
-      <AccordionTitle 
-        className={cn("border-solid border-primary")}
-      >
-        <button
-          aria-expanded={isOpen}
-          aria-controls="accordion-content"
-          onClick={onClick}
-          className="flex flex-row justify-between items-center w-full"
-        >
-          <h4 className="text-poppins text-left">{question}</h4>
-          <span>
-            {isOpen ? <MinusSymbolSVG width={40} height={40} fill="#1E1E1E"/> : <PlusSymbolSVG width={40} height={40} fill="#1E1E1E"/>}
-          </span>
-        </button>
-      </AccordionTitle>
-      <AccordionContent 
-        className={cn("bg-alternate text-secondary", isOpen ? "block" : "hidden")}
-        id="accordion-content"
-        hidden={!isOpen}
-      >
-        {answer}
-      </AccordionContent>
-    </section>
-  );
-})
-Accordion.displayName = "Accordion";
+      {children}
+      <PlusSymbolSVG width={40} height={40} fill="#1E1E1E"/>
+    </AccordionPrimitive.Trigger>
+  </AccordionPrimitive.Header>
+))
+AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
 
-export const AccordionTitle = React.forwardRef<HTMLDivElement, IAccordionItem>(({ className, ...props}, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "flex flex-col gap-5 p-4 sm:p-6",
-        className
-      )}
-      {...props}
-    />
-  );
-})
-AccordionTitle.displayName = "AccordionTitle";
+const AccordionContent = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+  <AccordionPrimitive.Content
+    ref={ref}
+    className="overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    {...props}
+  >
+    <div className={cn("pb-4 pt-0", className)}>{children}</div>
+  </AccordionPrimitive.Content>
+))
+AccordionContent.displayName = AccordionPrimitive.Content.displayName
 
-export const AccordionContent = React.forwardRef<HTMLDivElement, IAccordionItem>(({ className, ...props}, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "flex flex-col gap-5 p-4 sm:p-6 text-sm text-primary font-bold",
-        className
-      )}
-      {...props}
-    />
-  );
-})
-AccordionContent.displayName = "AccordionContent";
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }

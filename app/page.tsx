@@ -12,7 +12,7 @@ import {
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { DrillAndWrenchSVG, PaintBrushSVG, TillingSVG } from "@/components/SVGs";
-import { FAQ } from "./_components/faq";
+import { FaqSection } from "@/components/faq-section";
 // CONFIG
 import { sellingPoints } from "@/config/selling-points";
 // UTILS
@@ -75,7 +75,7 @@ export default function Home() {
       
       <section className={cn(bannerVariants({ variant: "center", size: "full", className: "flex-col items-stretch gap-2.5 py-5" }))}>
         <h2 className="font-font font-poppins text-xl text-alternate">FAQs</h2>
-        <FAQ />
+        <FaqSection />
       </section>
     </main>
   );
