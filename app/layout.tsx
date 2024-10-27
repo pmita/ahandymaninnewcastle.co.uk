@@ -9,7 +9,6 @@ import {
   BannerTitle, 
   bannerVariants 
 } from "@/components/banner";
-// import { InstagramSVG, FacebookSVG } from "@/components/SVGs";
 // UTILS
 import { roboto, poppins } from "@/utils/fonts";
 import { cn } from "@/utils/helpers";
@@ -28,22 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16498089938">
-        </script>
-        <script>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', ${'${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}'});
-          `}
-        </script>
-      </head>
       <body 
         className={cn(
-          "min-h-screen bg-secondary font-roboto antialiased",
+          "min-h-screen bg-background font-roboto antialiased",
           roboto.variable,
           poppins.variable
         
@@ -59,21 +45,6 @@ export default function RootLayout({
               Our Links
             </BannerTitle>
             <BannerDescription className="text-md font-roboto font-bold text-secondary">
-              {/* Remember to add these back once social media links are setup */}
-              {/* <div className="text-center text-secondary flex justify-center gap-2.5">
-                <Link 
-                  href="/projects"
-                  className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
-                >
-                  <InstagramSVG width={24} height={24} fill="#ffffff" />
-                </Link>
-                <Link 
-                  href="/projects"
-                  className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
-                >
-                  <FacebookSVG width={24} height={24} fill="#ffffff" />
-                </Link>
-              </div> */}
               <div className="text-center text-secondary flex justify-center gap-5">
                 <Link 
                   href="/projects"

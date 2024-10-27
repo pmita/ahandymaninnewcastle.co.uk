@@ -24,7 +24,7 @@ export default function Home() {
       <Banner className={cn(bannerVariants({ variant: "center", size: "threeQuarters", className: "flex-col bg-alternate rounded-[25px]" }))}>
         <BannerHeader className="text-center max-w-[350px] sm:max-w-[600px]">
           <BannerTitle 
-            className="text-2xl font-poppins font-bold text-secondary"
+            className="text-2xl font-poppins font-bold text-primary"
           >
             We paint, we build, we fix all your problems
           </BannerTitle>
@@ -33,15 +33,9 @@ export default function Home() {
         <BannerFooter className="text-center text-secondary gap-5">
           <Link 
             href="/contact"
-            className={cn(buttonVariants({ variant: "alternate", size: "lg" }))}
+            className={cn(buttonVariants({ variant: "default", size: "lg" }))}
           >
             Get in touch
-          </Link>
-          <Link 
-            href="/projects"
-            className={cn(buttonVariants({ variant: "alternateOutlined", size: "lg" }))}
-          >
-            Our work
           </Link>
         </BannerFooter>
       </Banner>

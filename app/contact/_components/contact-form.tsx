@@ -3,7 +3,7 @@
 // COMPONENTS
 import { InputField } from "@/components/input-field";
 import TextAreaField from "@/components/text-area";
-import { Button, buttonVariants } from "../../../components/ui/button";
+import { Button } from "@/components/ui/button";
 // HOOKS
 import { useFirestore } from "@/hooks/useFirestore";
 // PACKAGES
@@ -83,7 +83,7 @@ export const ContactForm = () => {
         />
       )}
 
-      <Button type="submit" className={cn(buttonVariants({ variant: "primary", size: "lg" }))}>
+      <Button type="submit">
         Submit
       </Button>
 
