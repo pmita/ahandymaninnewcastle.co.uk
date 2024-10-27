@@ -1,19 +1,18 @@
 "use client"
 
+// SERVER ACTIONS
+import { addQueryToDB } from "../actions";
 // COMPONENTS
-import { InputField } from "@/components/input-field";
-import TextAreaField from "@/components/text-area";
 import { Button } from "@/components/ui/button";
+import { FieldWithLabel } from "@/components/field-with-label";
 // HOOKS
 import { useFirestore } from "@/hooks/useFirestore";
 // PACKAGES
 import { type SubmitHandler, useForm } from "react-hook-form";
 // CONFIG
-import { contactForm, contactTextAreForm, honeyPotInput } from "@/config/forms";
-// UTILS
-import { cn } from "@/utils/helpers";
+import { contactForm, honeyPotInput } from "@/config/forms";
 // TYPES
-import { IContactForm, ContactFormErrors } from "@/types";
+import { IContactForm } from "@/types";
 
 
 export const ContactForm = () => {
@@ -36,7 +35,7 @@ export const ContactForm = () => {
   const onSubmit: SubmitHandler<IContactForm> = async ({ fullName, email, mobile, location, additionalInfo, goodToKnow }: IContactForm) => {
     // Check if the honeypot input is filled before sbubmitting the form in the db
     if (!goodToKnow) {
-      await addDocument(
+      await addQueryToDB(
         'queries', {
           fullName,
           email,
@@ -52,34 +51,29 @@ export const ContactForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col justify-center items-center gap-5">
-      <h1 className="text-lg text-alternate font-bold">Get in touch!</h1>
-      {contactForm && contactForm.map((input) => (
-        <InputField
-          key={input.id}
-          name={input.name}
-          type={input.type}
-          placeholder={input.placeholder}
+      <h1 className="text-xl mb-12 font-poppins font-extrabold text-secondary text-center">Get in touch!</h1>
+
+      {contactForm && contactForm.map((field) => (
+        <FieldWithLabel
+          key={field.id}
+          name={field.name}
+          type={field.type}
+          componentType={field.componentType}
+          placeholder={field.placeholder}
           register={register}
-          validationSchema={input.validationSchema}
-          error={errors[input.name as keyof ContactFormErrors]?.message}
+          validationSchema={field.validationSchema}
+          error={errors[field.name as keyof IContactForm]?.message}
         />
       ))}
 
-      <InputField
-        className="hidden"
-        name={honeyPotInput.name}
-        type={honeyPotInput.type}
-        placeholder={honeyPotInput.placeholder}
-        register={register}
-      />
-
-      {contactTextAreForm && (
-        <TextAreaField
-          name={contactTextAreForm.name}
-          placeholder={contactTextAreForm.placeholder}
+      {honeyPotInput && (
+        <FieldWithLabel
+          className="hidden"
+          name={honeyPotInput.name}
+          type={honeyPotInput.type}
+          componentType={honeyPotInput.componentType}
+          placeholder={honeyPotInput.placeholder}
           register={register}
-          validationSchema={contactTextAreForm.validationSchema}
-          error={errors[contactTextAreForm.name as keyof ContactFormErrors]?.message}
         />
       )}
 
