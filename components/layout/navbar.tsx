@@ -3,10 +3,10 @@ import Link from "next/link"
 
 export async function NavBar() {
   return (
-    <nav className="container min-h-[10vh] mx-auto bg-primary flex justify-between items-center p-4">
+    <nav className="container min-h-[10vh] mx-auto bg-neutral flex justify-between items-center p-4">
       <Link 
         href="/" 
-        className="text-md text-neutral font-poppins font-bold"
+        className="text-md text-primary font-poppins font-bold"
       >
         RefubCity
       </Link>
@@ -14,7 +14,7 @@ export async function NavBar() {
         <li className="lg:px-4">
           <Link 
             href="/projects" 
-            className="text-neutral font-semibold hover:opacity-80"
+            className="text-primary font-semibold hover:opacity-80"
           >
             Projects
           </Link>
@@ -22,7 +22,7 @@ export async function NavBar() {
         <li className="lg:pl-4">
           <Link 
             href="/contact" 
-            className="text-neutral font-semibold hover:opacity-80"
+            className="text-primary font-semibold hover:opacity-80"
           >
             Contact
           </Link>
