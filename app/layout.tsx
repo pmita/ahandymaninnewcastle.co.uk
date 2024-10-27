@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 // COMPONENTS
-import { NavBar } from "@/components/navbar";
-import { 
-  BannerDescription, 
-  BannerFooter, 
-  BannerHeader, 
-  BannerTitle, 
-  bannerVariants 
-} from "@/components/banner";
+import { NavBar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 // UTILS
 import { roboto, poppins } from "@/utils/fonts";
 import { cn } from "@/utils/helpers";
@@ -37,41 +31,7 @@ export default function RootLayout({
       >
         <NavBar />
         {children}
-        <footer className={cn(bannerVariants({ variant: "center", size: "quarter", className: "flex-col bg-alternate" }))}>
-          <BannerHeader className="text-center">
-            <BannerTitle 
-              className="text-xl font-poppins font-bold text-secondary"
-            >
-              Our Links
-            </BannerTitle>
-            <BannerDescription className="text-md font-roboto font-bold text-secondary">
-              <div className="text-center text-secondary flex justify-center gap-5">
-                <Link 
-                  href="/projects"
-                  className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
-                >
-                  Projects
-                </Link>
-                <Link 
-                  href="/contact"
-                  className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
-                >
-                  Contact
-                </Link>
-                <Link 
-                  href="/privacy-policy"
-                  className="text-secondary text-lg font-poppins font-bold hover:opacity-80"
-                >
-                  Privacy Policy
-                </Link>
-              </div>
-            </BannerDescription>
-          </BannerHeader>
-          <BannerFooter className="text-secondary flex flex-col">
-            <p>Trademark ™ A handy man in newcastle</p>
-            <p>Copyright © 2024 ahandymaninnewcastle.co.uk. All rights reserved.</p>
-          </BannerFooter>
-        </footer>
+        <Footer />
       </body>
     </html>
   );

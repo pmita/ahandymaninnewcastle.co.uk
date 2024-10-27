@@ -1,18 +1,11 @@
 // NEXT
 import Link from "next/link";
 // COMPONENTS
-import { 
-  Banner,
-  BannerDescription, 
-  BannerFooter, 
-  BannerHeader, 
-  BannerTitle, 
-  bannerVariants
-} from "@/components/banner";
-import { buttonVariants } from "@/components/ui/button";
+import { bannerVariants } from "@/components/ui/banner";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { DrillAndWrenchSVG, PaintBrushSVG, TillingSVG } from "@/components/SVGs";
-import { FaqSection } from "@/components/faq-section";
+import { LandingBanner } from "@/components/layout/landing-banner";
+import { FaqSection } from "@/components/layout/faq-section";
 // CONFIG
 import { sellingPoints } from "@/config/selling-points";
 // UTILS
@@ -21,24 +14,7 @@ import { cn } from "@/utils/helpers";
 export default function Home() {
   return (
     <main className="container  px-5 pt-5">
-      <Banner className={cn(bannerVariants({ variant: "center", size: "threeQuarters", className: "flex-col bg-alternate rounded-[25px]" }))}>
-        <BannerHeader className="text-center max-w-[350px] sm:max-w-[600px]">
-          <BannerTitle 
-            className="text-2xl font-poppins font-bold text-primary"
-          >
-            We paint, we build, we fix all your problems
-          </BannerTitle>
-          <BannerDescription className="text-md font-roboto font-bold text-secondary ">Affordable solutions to common problems, with a unique customer experience for everyday households</BannerDescription>
-        </BannerHeader>        
-        <BannerFooter className="text-center text-secondary gap-5">
-          <Link 
-            href="/contact"
-            className={cn(buttonVariants({ variant: "default", size: "lg" }))}
-          >
-            Get in touch
-          </Link>
-        </BannerFooter>
-      </Banner>
+      <LandingBanner />
 
       <section className={cn(bannerVariants({ variant: "center", size: "half", className: "flex-col items-stretch gap-10 pt-10 sm:pt-25" }))}>
         <h2 className="font-font font-poppins text-xl text-primary text-center">Our Expertise</h2>
