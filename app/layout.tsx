@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 // COMPONENTS
-import { NavMenu } from "./_components/nav-menu";
+import { NavBar } from "@/components/navbar";
 import { 
   BannerDescription, 
   BannerFooter, 
@@ -35,7 +35,7 @@ export default function RootLayout({
         
         )}
       >
-        <NavMenu />
+        <NavBar />
         {children}
         <footer className={cn(bannerVariants({ variant: "center", size: "quarter", className: "flex-col bg-alternate" }))}>
           <BannerHeader className="text-center">

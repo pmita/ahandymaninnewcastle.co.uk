@@ -1,7 +1,7 @@
 // NEXT
 import Link from "next/link"
 
-export async function NavMenu() {
+export async function NavBar() {
   return (
     <nav className="container min-h-[10vh] mx-auto bg-primary flex justify-between items-center p-4">
       <Link 
