@@ -11,10 +11,23 @@ import { type SubmitHandler, useForm } from "react-hook-form";
 import { contactForm, honeyPotInput } from "@/config/forms";
 // TYPES
 import { IContactForm } from "@/types";
+import { useMutation } from "@tanstack/react-query";
 
 
 export const ContactForm = () => {
   // STATE & HOOKS
+  const mutation = useMutation({
+    mutationKey: ['addQueryToDB'],
+    mutationFn: async (formDetails: IContactForm) => {
+      await addQueryToDB('queries', formDetails);
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+    onSuccess: () => {
+      console.log('Query added to the database');
+    }
+  });
   const { register, handleSubmit, formState: { errors }, reset} = useForm<IContactForm>({
     mode: 'onBlur',
     reValidateMode: 'onChange',
@@ -26,21 +39,20 @@ export const ContactForm = () => {
       additionalInfo: '',
       goodToKnow: ''
     }
-  })
+  });
 
   // EVENTS
   const onSubmit: SubmitHandler<IContactForm> = async ({ fullName, email, mobile, location, additionalInfo, goodToKnow }: IContactForm) => {
     // Check if the honeypot input is filled before sbubmitting the form in the db
     if (!goodToKnow) {
-      await addQueryToDB(
-        'queries', {
-          fullName,
-          email,
-          mobile,
-          location,
-          additionalInfo
-        }
-      )
+      mutation.mutate({ 
+        fullName, 
+        email, 
+        mobile, 
+        location, 
+        additionalInfo, 
+        goodToKnow 
+      });
     }
 
     reset();
@@ -74,8 +86,8 @@ export const ContactForm = () => {
         />
       )}
 
-      <Button type="submit">
-        Submit
+      <Button type="submit" disabled={mutation.isPending}>
+        {mutation.isPending ? 'Sending...' : 'Submit'}
       </Button>
     </form>
   )
