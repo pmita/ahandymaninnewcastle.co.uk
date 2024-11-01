@@ -24,7 +24,7 @@ export default function CourseChapterLayout({ children, params }: CourseChapterL
       <header className="container min-h-[5dvh] bg-alternate flex flex-row justify-start items-center gap-5 p-5 sticky top-0 z-50">
         <Link 
           href='/projects'
-          className={cn(buttonVariants({ variant: 'primary', size: "sm" }), "min-w-[75px]")}  
+          className={cn(buttonVariants({ variant: 'default', size: "sm" }), "min-w-[75px]")}  
         >
           Go Back
         </Link>
