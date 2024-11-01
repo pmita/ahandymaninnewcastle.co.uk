@@ -1,7 +1,7 @@
 "use client"
 
 // SERVER ACTIONS
-import { addQueryToDB } from "../app/(store)/contact/actions";
+import { addQueryToDB } from "@/actions/db/add-query-to-db";
 // COMPONENTS
 import { Button } from "@/components/ui/button";
 import { FieldWithLabel } from "@/components/field-with-label";
