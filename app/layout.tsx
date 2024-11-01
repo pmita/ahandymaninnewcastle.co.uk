@@ -1,14 +1,12 @@
 // NEXT
 import type { Metadata } from "next";
-// COMPONENTS
-import { NavBar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
+// PACKAGES
+import { ReactQueryProvider } from "@/context/ReactQueryContext";
 // UTILS
 import { roboto, poppins } from "@/utils/fonts";
 import { cn } from "@/utils/helpers";
 // STYLES
 import '@/styles/global.css';
-import { ReactQueryProvider } from "@/context/ReactQueryContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -32,9 +30,9 @@ export default function RootLayout({
         )}
       >
         <ReactQueryProvider>
-          <NavBar />
-          {children}
-          <Footer />
+          <main>
+            {children}
+          </main>
         </ReactQueryProvider>
       </body>
     </html>
