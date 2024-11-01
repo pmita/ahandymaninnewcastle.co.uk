@@ -2,7 +2,7 @@
 import * as React from "react"
 // UTILS
 import { cn } from '@/utils/helpers';
-import { MinusSymbolSVG, PlusSymbolSVG } from "../SVGs";
+import { ChevronDownIcon } from "@radix-ui/react-icons"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
 
 const Accordion = AccordionPrimitive.Root
@@ -33,7 +33,7 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <PlusSymbolSVG width={40} height={40} fill="#1E1E1E"/>
+      <ChevronDownIcon className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200" />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ))
