@@ -30,7 +30,7 @@ export default function RootLayout({
         )}
       >
         <ReactQueryProvider>
-          <main>
+          <main className="container  px-5 pt-5">
             {children}
           </main>
         </ReactQueryProvider>
