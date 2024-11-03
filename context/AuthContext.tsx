@@ -3,10 +3,10 @@
 // REACT
 import { createContext, useState, useEffect } from "react";
 // FIREBASE
-import { getAuth, getIdToken, onAuthStateChanged, type User} from "firebase/auth";
-import { app, auth } from '@/firebase/client-config';
+import { onAuthStateChanged, type User} from "firebase/auth";
+import { auth } from '@/firebase/client-config';
 // UTILS
-import { setAuthCookie } from "@/utils/cookies";
+import { saveFirebaseCookie } from "@/utils/auth";
 
 type AuthContextType = {
   user: User| null;
@@ -25,13 +25,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
       user ? setUser(user) : setUser(null);
     })
 
-    const currentUser = getAuth(app).currentUser;
-
-    if (currentUser) {
-      getIdToken(currentUser, true).then((idToken) => {
-        setAuthCookie(idToken);
-      })
-    }
+    saveFirebaseCookie();
 
     return () => unsubscribe();
   }, [user]);

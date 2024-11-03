@@ -16,7 +16,7 @@ import { useMutation } from '@tanstack/react-query';
 import { signinForm } from "@/config/forms";
 // UTILS
 import { cn } from "@/utils/helpers";
-import { signUserIn } from '@/utils/auth';
+import { saveFirebaseCookie, signUserIn } from '@/utils/auth';
 
 interface SignInFormProps {
   email: string;
@@ -26,13 +26,18 @@ interface SignInFormProps {
 export const SignInForm = () => {
   // STATE && VARIABLES
   const router = useRouter();
-  const { user, setUser } = useAuth();
+  const { setUser } = useAuth();
   const mutation = useMutation({
     mutationKey: ['signin'],
     mutationFn: async ({ email, password }: SignInFormProps) => {
       const response = await signUserIn(email, password);
+
+      saveFirebaseCookie();
       setUser(response.user);
       console.log('User signed in successfully');
+    },
+    onSuccess: () => {
+      router.push('/dashboard');
     },
     onError: (error) => {
       setUser(null);
@@ -51,18 +56,7 @@ export const SignInForm = () => {
   // EVENTS
   const onSubmit = useCallback(async ({email, password }: SignInFormProps) => {
     mutation.mutate({ email, password });
-
-    if (!mutation.isError && !mutation.isPending) {
-      router.push('/dashboard');
-    }
   }, []);
-
-  // USE EFFECTS
-  useEffect(() => {
-    if (user) {
-      router.push('/dashboard');
-    }
-  }, [user, router]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-[300px] flex flex-col justify-center items-center gap-5">
