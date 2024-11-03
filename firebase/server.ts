@@ -21,7 +21,8 @@ if (!admin.apps.length) {
 
 // SERVICES
 const firestore = admin.firestore();
+const authSS = admin.auth();
 // HELPERS
 const serverTimestamp = admin.firestore.FieldValue.serverTimestamp;
 
-export { firestore, serverTimestamp };
+export { firestore, authSS, serverTimestamp };
