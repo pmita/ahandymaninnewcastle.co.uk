@@ -16,7 +16,7 @@ import { useMutation } from '@tanstack/react-query';
 import { signinForm } from "@/config/forms";
 // UTILS
 import { cn } from "@/utils/helpers";
-import { signin } from '@/utils/auth';
+import { signUserIn } from '@/utils/auth';
 
 interface SignInFormProps {
   email: string;
@@ -30,7 +30,7 @@ export const SignInForm = () => {
   const mutation = useMutation({
     mutationKey: ['signin'],
     mutationFn: async ({ email, password }: SignInFormProps) => {
-      const response = await signin(email, password);
+      const response = await signUserIn(email, password);
       setUser(response.user);
       console.log('User signed in successfully');
     },
