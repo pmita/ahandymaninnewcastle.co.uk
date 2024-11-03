@@ -7,11 +7,11 @@ import { Button } from "@/components/ui/button";
 import { FieldWithLabel } from "@/components/field-with-label";
 // PACKAGES
 import { type SubmitHandler, useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
 // CONFIG
 import { contactForm, honeyPotInput } from "@/config/forms";
 // TYPES
 import { IContactForm } from "@/types";
-import { useMutation } from "@tanstack/react-query";
 
 
 export const ContactForm = () => {
