@@ -8,6 +8,7 @@ import { useCallback, useEffect } from 'react';
 import { FieldWithLabel } from '@/components/field-with-label';
 import { Button, buttonVariants } from "@/components/ui/button";
 // HOOKS
+import { useAuth } from '@/hooks/useAuth';
 // PACKAGES
 import { useForm } from "react-hook-form";
 import { useMutation } from '@tanstack/react-query';
@@ -15,7 +16,6 @@ import { useMutation } from '@tanstack/react-query';
 import { signinForm } from "@/config/forms";
 // UTILS
 import { cn } from "@/utils/helpers";
-import { useAuth } from '@/hooks/useAuth';
 import { signin } from '@/utils/auth';
 
 interface SignInFormProps {
