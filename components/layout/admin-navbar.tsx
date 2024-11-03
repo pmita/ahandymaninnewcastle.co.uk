@@ -2,6 +2,7 @@
 
 // NEXT
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 // REACT
 import { useCallback } from 'react';
 // COMPONENTS
@@ -16,6 +17,7 @@ import { signUserOut } from '@/utils/auth';
 
 export const AdminNavbar = () => {
   // STATE && VARIABLES
+  const router = useRouter();
   const { setUser } = useAuth();
   const mutation = useMutation({
     mutationKey: ['signout'],
@@ -24,6 +26,7 @@ export const AdminNavbar = () => {
     },
     onSuccess: () => {
       setUser(null);
+      router.push('/signin');
     },
     onError: (error) => {
       console.log(error);
