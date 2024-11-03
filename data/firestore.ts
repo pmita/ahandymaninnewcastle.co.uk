@@ -23,6 +23,7 @@ export const getCollectionData = async (collection: string, filters: IFirestoreF
       id: doc.id,
       ...doc.data(),
       createdAt: doc.data().createdAt?.toMillis() ?? null,
+      lastUpdated: doc.data().lastUpdated?.toMillis() ?? null,
       updatedAt: doc.data().updatedAt?.toMillis() ?? null,
     }))
 
