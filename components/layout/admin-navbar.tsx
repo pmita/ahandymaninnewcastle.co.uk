@@ -48,7 +48,7 @@ export const AdminNavbar = () => {
 
       <Button 
         className={cn(
-          buttonVariants({ variant: 'default', size: 'lg' }), 
+          buttonVariants({ variant: 'secondary', size: 'lg' }), 
           "item-stretch"
         )}
         onClick={onClick}
