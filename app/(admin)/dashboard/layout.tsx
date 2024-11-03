@@ -1,18 +1,17 @@
 // COMPONENTS
-import { AuthCheck } from '@/components/auth-check';
 import { AdminNavbar } from '@/components/layout/admin-navbar';
-import { SignInForm } from '@/components/forms/signin-form';
+import { validateUserSS } from '@/data/auth';
+import { redirect } from 'next/navigation';
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const isUserValid = await validateUserSS();
+
+  if (!isUserValid) redirect("/signin");
+  
   return (
-    <AuthCheck fallback={(
-      <section className="min-h-[100dvh] grid place-content-center text-center gap-5">
-        <h1>Sign In</h1>
-        <SignInForm />
-      </section>
-    )}>
-        <AdminNavbar />
-        {children}
-    </AuthCheck>
+    <>
+      <AdminNavbar />
+      {children}
+    </>
   )
 }
