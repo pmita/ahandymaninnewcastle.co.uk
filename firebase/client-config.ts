@@ -1,6 +1,6 @@
-import firebase from "firebase/app";
+import { initializeApp } from "firebase/app";
 // FIREBASE SERVICES
-import "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API,
@@ -11,12 +11,9 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
+const app = initializeApp(firebaseConfig);
 
 // SERVICES
-const firestore = firebase.firestore();
-const timestamp = firebase.firestore.FieldValue.serverTimestamp;
+const auth = getAuth(app);
 
-export { firebase, firestore, timestamp };
+export { app, auth };
