@@ -7,6 +7,7 @@ import { useSearchParams } from "next/navigation"
 import { getCollectionData } from "@//data/firestore"
 import { IQueryItem } from "@/types/firestore";
 import { ItemCard } from "./item-card";
+import { ItemsInTable } from "./item-table";
 
 export const ItemsInGrid = ({ items }: { items: IQueryItem[] }) => {
   // STATE && VARIABLES
@@ -34,6 +35,8 @@ export const ItemsInGrid = ({ items }: { items: IQueryItem[] }) => {
           <ItemCard key={item.id} item={item as IQueryItem} />
         ))
       ) : null}
+
+      <ItemsInTable items={data as IQueryItem[]}/>
     </div>
   )
 }
