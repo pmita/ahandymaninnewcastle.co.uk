@@ -1,3 +1,5 @@
+"use server"
+
 // FIREBASE
 import { firestore } from "@/firebase/server";
 // TYPES

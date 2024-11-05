@@ -1,6 +1,7 @@
 import { getCollectionData } from "@/data/firestore";
 import { ItemCard } from "@/components/item-card";
-
+import { IQueryItem } from "@/types/firestore";
+import { ItemsInGrid } from "./items-in-grid";
 
 export default async function ItemsList({ status }: { status: string }) {
   // SERVER LAND
@@ -10,18 +11,18 @@ export default async function ItemsList({ status }: { status: string }) {
     sort: 'desc', 
   });
 
-  console.log(items);
-
   return (
-    <div className="grid grid-col-1 auto-rows-[285px] gap-4 lg:grid-cols-2 lg:gap-8 mt-4">
+    <>
       {/* {items ? (
         {items.map((item: any) => (
           <ItemCard key={item.id} item={item} />
         ))}
       ): null} */}
-      {items && items.map((item: any) => (
+      {/* {items && items.map((item: any) => (
         <ItemCard key={item.id} item={item} />
-      ))}
-    </div>
+      ))} */}
+
+      <ItemsInGrid items={items as IQueryItem[]} />
+    </>
   )
 }
