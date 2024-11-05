@@ -19,7 +19,7 @@ export const ItemCard = ({ item }: { item : IQueryItem | null }) => {
   return (
     <Card className="flex flex-col justify-center items-stretch">
       <CardHeader className="flex-1 flex-row justify-between items-center">
-        <ItemStatus status="TEST"/>
+        <ItemStatus status="INITIAL"/>
         {/*<FormatedTime time={item.createdAt} /> */}
       </CardHeader>
       <CardDescription className="flex-1 p-6">
