@@ -15,7 +15,7 @@ export const getCollectionData = async (collection: string, filters: IFirestoreF
       throw new Error('You must be authenticated to access this resource');
     }
 
-    const docsRef = firestore.collection(collection).limit(5);
+    const docsRef = firestore.collection(collection);
     const docsWithFilters = filters
       ? applyFirestoreFilters(docsRef, filters)
       : docsRef
@@ -25,7 +25,6 @@ export const getCollectionData = async (collection: string, filters: IFirestoreF
       id: doc.id,
       ...doc.data(),
       createdAt: doc.data().createdAt?.toMillis() ?? null,
-      lastUpdated: doc.data().lastUpdated?.toMillis() ?? null,
       updatedAt: doc.data().updatedAt?.toMillis() ?? null,
     }))
 
@@ -47,7 +46,6 @@ export const getDocumentData = async(collection: string, docId: string): Promise
     id: docSnapshot.id,
     ...docData,
     createdAt: docData?.createdAt?.toMillis() ?? null,
-    lastUpdated: docData?.lastUpdated?.toMillis() ?? null,
     updatedAt: docData?.updatedAt?.toMillis() ?? null,
   }
 }
@@ -61,13 +59,16 @@ export const addQueryToDB = async (collection: string, data: object) => {
     const response = await docRef.add({
       ...data, 
       createdAt: serverTimestamp(),
-      lastUpdated: serverTimestamp(),
       updatedAt: serverTimestamp(),
     });
 
     if(!response) {
       throw new Error('Could not add item to our database');
     }
+
+    await response.update({
+      id: response.id,
+    });
   }catch(error) {
     throw new Error((error as Error).message);
   }
@@ -80,7 +81,6 @@ export const updateDocumentData = async (collection: string, docId: string, data
     const response = await docRef.update({
       ...data,
       createdAt: serverTimestamp(),
-      lastUpdated: serverTimestamp(),
       updatedAt: serverTimestamp(),
     });
 
