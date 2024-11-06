@@ -72,3 +72,22 @@ export const addQueryToDB = async (collection: string, data: object) => {
     throw new Error((error as Error).message);
   }
 }
+
+export const updateDocumentData = async (collection: string, docId: string, data: object) => {
+  const docRef = firestore.collection(collection).doc(docId);
+
+  try {
+    const response = await docRef.update({
+      ...data,
+      createdAt: serverTimestamp(),
+      lastUpdated: serverTimestamp(),
+      updatedAt: serverTimestamp(),
+    });
+
+    if(!response) {
+      throw new Error('Could not update item in our database');
+    }
+  }catch(error) {
+    throw new Error((error as Error).message);
+  }
+} 
