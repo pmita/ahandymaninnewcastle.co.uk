@@ -1,7 +1,8 @@
-import ItemsList from "@/components/items-list";
-import { StatusFilters } from "@/components/status-filters";
 // REACT
 import { Suspense } from "react";
+// COMPONENTS
+import Items from "@/components/items";
+import { StatusFilters } from "@/components/status-filters";
 
 type SeaerchParams = {
   [key: string]: string | undefined;
@@ -15,7 +16,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Se
         <StatusFilters status={searchParams.status || 'ALL'} />
       </section>
       <Suspense fallback={(<h1>Loading ...</h1>)}>
-        <ItemsList status={searchParams.status || 'ALL'} />
+        <Items status={searchParams.status || 'ALL'} />
       </Suspense>
     </>
   );
