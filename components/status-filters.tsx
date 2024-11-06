@@ -7,6 +7,8 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useCallback, useState } from "react"
 // COMPONENTS
 import { Button, buttonVariants } from "@/components/ui/button";
+// UTILS
+import { cn } from "@/utils/helpers";
 
 const baseOptions = ['INITIAL', 'PROGRESSED', 'COMPLETED'];
 
@@ -34,10 +36,10 @@ export const StatusFilters = ({ status }: { status: string }) => {
       {['ALL', ...baseOptions].map((itemStatus: string) => (
         <Button
           key={itemStatus}
-          className={(buttonVariants({
-            variant: (currentOption === itemStatus ? 'default' : 'secondary'),
+          className={cn(buttonVariants({
+            variant: (currentOption === itemStatus ? 'secondary' : 'outline'),
             size: 'lg',
-          }))}
+          }), "rounded-none border-[3px] border-secondary")}
           onClick={() => updateSearchParams(itemStatus)}
         >
           {itemStatus}
