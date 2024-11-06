@@ -12,10 +12,18 @@ import { ItemsInGrid } from "./items-in-grid";
 // TYPES
 import { IQueryItem } from "@/types/firestore";
 
+type ComponentTypeMap = Record<string, React.ElementType>;
+
+const ComponentType: ComponentTypeMap = {
+  'GRID': ItemsInGrid,
+  'TABLE': ItemsInTable,
+}
+
 export const ItemsLayout = ({ items }: { items: IQueryItem[] }) => {
   // STATE && VARIABLES
   const seatchParams = useSearchParams();
   const status = seatchParams.get('status') || 'ALL';
+  const display = seatchParams.get('display') || 'GRID';
   const { data } = useQuery<FirebaseFirestore.DocumentData[]>({
     queryKey: ['queries', { status }],
     queryFn: async () => {
@@ -29,12 +37,12 @@ export const ItemsLayout = ({ items }: { items: IQueryItem[] }) => {
     initialData: items,
   })
 
+  // LAYOUT
+  const Component = ComponentType[display] || ComponentType['TABLE'];
+
   if (!data.length) return null;
   
   return (
-    <>
-      <ItemsInGrid items={data as IQueryItem[]} />
-      <ItemsInTable items={data as IQueryItem[]} />
-    </>
+    <Component items={data as IQueryItem[]} />
   )
 }
