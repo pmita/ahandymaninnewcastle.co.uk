@@ -1,7 +1,7 @@
 // REACT
 import { Suspense } from "react";
 // COMPONENTS
-import Items from "@/components/Items";
+import Items from "@/components/items/items";
 import { StatusFilters } from "@/components/status-filters";
 import { LayoutFilters } from "@/components/layout-filters";
 

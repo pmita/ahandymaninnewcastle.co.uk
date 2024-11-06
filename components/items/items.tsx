@@ -1,7 +1,7 @@
 // DATA
 import { getCollectionData } from "@/data/firestore";
 // COMPONENTS
-import { ItemsLayout } from "./items-layout";
+import { ItemsLayout } from "./components/items-layout";
 // TYPES
 import { IQueryItem } from "@/types/firestore";
 

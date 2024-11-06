@@ -33,7 +33,6 @@ export const ItemsLayout = ({ items }: { items: IQueryItem[] }) => {
         sort: 'desc',
       });
     },
-    
     initialData: items,
   })
 

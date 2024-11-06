@@ -3,7 +3,7 @@ import Link from 'next/link';
 // COMPONENTS
 import { Card, CardDescription, CardFooter, CardHeader } from '@/components/ui/card';
 import { buttonVariants } from '@/components/ui/button';
-import { ItemStatus } from './item-status';
+import { ItemStatus } from './components/item-status';
 // TYPES
 import { IQueryItem } from '@/types/firestore';
 // import { FormatedTime } from '@/components/FormatedTime';

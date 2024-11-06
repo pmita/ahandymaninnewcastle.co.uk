@@ -1,7 +1,7 @@
 // DATA
 import { IQueryItem } from "@/types/firestore";
 // COMPONENTS
-import { ItemCard } from "./item-card";
+import { ItemCard } from "../../item/item-card";
 
 
 export const ItemsInGrid = ({ items }: { items : IQueryItem[] | null }) => {
