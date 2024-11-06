@@ -28,5 +28,13 @@ export interface IQueryItem extends FirebaseFirestore.DocumentData {
   additionalInfo: string;
   status: QUERY_STATUS;
   createdAt: number | string;
-  lastUpdatedAt: number | string;
+  updatedAt: number | string;
+}
+
+export type IComments = {
+  content: string;
+  createdAt: number | string;
+  status: QUERY_STATUS;
+  updatedAt: number | string;
+  id: string;
 }
