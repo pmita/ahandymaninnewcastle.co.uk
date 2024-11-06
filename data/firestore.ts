@@ -1,7 +1,7 @@
 "use server"
 
 // FIREBASE
-import { firestore } from "@/firebase/server";
+import { firestore, serverTimestamp } from "@/firebase/server";
 // TYPES
 import { IFirestoreFilters } from "@/types/firestore";
 // UTILS
@@ -30,4 +30,24 @@ export const getCollectionData = async (collection: string, filters: IFirestoreF
     }))
 
     return docsData;
+}
+
+
+export const addQueryToDB = async (collection: string, data: object) => {
+
+  const docRef = firestore.collection(collection);
+
+  try {
+    const response = await docRef.add({
+      ...data, 
+      createdAt: serverTimestamp(),
+      lastUpdated: serverTimestamp()
+    });
+
+    if(!response) {
+      throw new Error('Could not add item to our database');
+    }
+  }catch(error) {
+    throw new Error((error as Error).message);
+  }
 }
