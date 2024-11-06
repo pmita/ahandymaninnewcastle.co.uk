@@ -1,5 +1,7 @@
 "use client"
 
+// REACT
+import { useCallback } from "react";
 // PACKAGES
 import { useForm } from "react-hook-form"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -9,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import { ItemStatus } from "@/components/item/components/item-status";
 // DATA
 import { getDocumentData, updateDocumentData } from "@/data/firestore";
-import { useCallback } from "react";
 
 type IStatusForm = {
   status: string;
@@ -32,24 +33,21 @@ export const UpdateStatus = ({ id, status }: { id: string, status: string }) => 
       await updateDocumentData('queries', id, { status: newStatus });
     },
     onMutate: async ({ status: newStatus }) => {
-      // Cancel any outgoing refetches
       await queryClient.cancelQueries({ queryKey: ['queries', { id }] });
-      // Get the previous data
+
       const previousData = queryClient.getQueryData(['queries', { id }]);
-      // Optimistically update the status based on new status
+
       queryClient.setQueryData(['queries', { id }], (oldData: any) => ({
         ...oldData,
         status: newStatus,
       }));
-      // Return the previous data to be used in case of error
+
       return { previousData };
     },
     onError: (_error, _variables, context) => {
-      // Rollback to the previous data
       queryClient.setQueryData(['queries', id], context?.previousData);
     },
     onSettled: () => {
-      // Invalidate the queries to refetch the data
       queryClient.invalidateQueries({ queryKey: ['queries', { id }] });
     },
   })
