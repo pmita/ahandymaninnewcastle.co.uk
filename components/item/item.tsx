@@ -13,8 +13,6 @@ export default async function Item({ id }: { id: string }) {
   if (!item) return notFound();
 
   return (
-    <>
-      <ItemLayout item={item as IQueryItem} />
-    </>
+    <ItemLayout item={item as IQueryItem} />
   );
 } 

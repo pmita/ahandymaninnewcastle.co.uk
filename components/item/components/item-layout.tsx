@@ -6,6 +6,7 @@ import { useParams } from "next/navigation"
 import { getDocumentData } from "@/data/firestore";
 // COMPONENTS
 import { ItemDetails } from "@/components/details/item-details";
+import { UpdateStatus } from "@/components/item/components/update-status";
 // PACKAGES
 import { useQuery } from "@tanstack/react-query";
 // TYPES
@@ -26,9 +27,8 @@ export const ItemLayout = ({ item }: { item: IQueryItem}) => {
   return (
     <section className="flex flex-col justify-center items-stretch  gap-4 p-8">
       <div className="grid grid-cols-1 grid-rows-[250px] gap-4 lg:grid-cols-2 lg:gap-8">
-        <ItemDetails item={item as IQueryItem} />
-        <ItemDetails item={item as IQueryItem} />
-        <ItemDetails item={item as IQueryItem} />
+        <ItemDetails item={data as IQueryItem} />
+        <UpdateStatus id={data.id} status={data.status} />
       </div> 
     </section>
   )
