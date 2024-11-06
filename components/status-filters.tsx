@@ -17,8 +17,6 @@ export const StatusFilters = ({ status }: { status: string }) => {
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  console.log(searchParams, 'searchParams');
-
   // EVENTS
   const updateSearchParams = useCallback((filterOption: string) => {
     const params = new URLSearchParams(searchParams.toString());

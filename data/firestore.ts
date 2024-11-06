@@ -41,7 +41,8 @@ export const addQueryToDB = async (collection: string, data: object) => {
     const response = await docRef.add({
       ...data, 
       createdAt: serverTimestamp(),
-      lastUpdated: serverTimestamp()
+      lastUpdated: serverTimestamp(),
+      updatedAt: serverTimestamp(),
     });
 
     if(!response) {
