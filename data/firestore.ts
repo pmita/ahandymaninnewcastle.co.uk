@@ -32,6 +32,26 @@ export const getCollectionData = async (collection: string, filters: IFirestoreF
     return docsData;
 }
 
+export const getDocumentData = async(collection: string, docId: string): Promise<FirebaseFirestore.DocumentData> => {
+  const isUserValid = await validateUserSS();
+
+  if (!isUserValid) {
+    throw new Error('You must be authenticated to access this resource');
+  }
+
+  const docsRef = firestore.collection(collection).doc(docId);
+  const docSnapshot = await docsRef.get();
+  const docData = docSnapshot.data();
+
+  return {
+    id: docSnapshot.id,
+    ...docData,
+    createdAt: docData?.createdAt?.toMillis() ?? null,
+    lastUpdated: docData?.lastUpdated?.toMillis() ?? null,
+    updatedAt: docData?.updatedAt?.toMillis() ?? null,
+  }
+}
+
 
 export const addQueryToDB = async (collection: string, data: object) => {
 

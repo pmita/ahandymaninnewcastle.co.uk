@@ -1,3 +1,7 @@
+// REACT
+import { Suspense } from "react";
+// COMPONENTS
+import Item from "@/components/item/item";
 
 interface DashboardItemPageProps {
   params: {
@@ -7,11 +11,10 @@ interface DashboardItemPageProps {
 
 export default async function DashboardItemPage({ params }: DashboardItemPageProps) {
   const { id } = params;
-  
-  console.log(id);
+
   return (
-    <h1>
-      Welcome to the dashboard item page for item. The unique id is {id} 
-    </h1>
+    <Suspense fallback={(<tr>Loading...</tr>)}>
+      <Item id={id} />
+    </Suspense>
   );
 } 
