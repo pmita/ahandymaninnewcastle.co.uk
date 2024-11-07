@@ -32,7 +32,7 @@ export const Comments = ({
       return await getCollectionData(`queries/${id}/comments`, { sort: 'asc' });
     },
     initialData: comments,
-  })
+  });
 
   return (
     <>

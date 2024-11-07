@@ -4,13 +4,10 @@ import Link from 'next/link';
 import { Card, CardDescription, CardFooter, CardHeader } from '@/components/ui/card';
 import { buttonVariants } from '@/components/ui/button';
 import { ItemStatus } from './components/item-status';
+import { QuickView } from '@/components/quick-view';
 // TYPES
 import { IQueryItem } from '@/types/firestore';
 // import { FormatedTime } from '@/components/FormatedTime';
-// import { Status } from '@/components/Status';
-// import { QuickView } from '../QuickView';
-// TYPES
-// import { IQueryItem } from '@/types/db';
 
 export const ItemCard = ({ item }: { item : IQueryItem | null }) => {
 
@@ -33,7 +30,7 @@ export const ItemCard = ({ item }: { item : IQueryItem | null }) => {
         >
             Edit
         </Link>
-        {/* <QuickView item={item} /> */}
+        <QuickView item={item} />
       </CardFooter>
     </Card>
   )
