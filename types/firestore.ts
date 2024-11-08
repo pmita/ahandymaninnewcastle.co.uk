@@ -6,7 +6,9 @@ export interface IFirestoreFilters {
   numberOfItems?: number | null;
   status?: string | null;
   sort?: string | null;
-  lastItem?: string | Timestamp | null;
+  // lastItem?: string | Timestamp | null;
+  startDate?: string | Timestamp | null | number;
+  endDate?: string | Timestamp | null;
 }
 
 export enum QUERY_STATUS {

@@ -1,14 +1,27 @@
 import { CollectionRefServerSide, IFirestoreFilters, ORDER_BY, QUERY_STATUS } from "@/types/firestore";
+import { Timestamp } from "firebase-admin/firestore";
 
 export const applyFirestoreFilters = (collectionRef:  CollectionRefServerSide, { 
   numberOfItems = null, 
   status = null, 
   sort = null,
-  lastItem = null
+  startDate = null,
+  endDate = null,
 }: IFirestoreFilters) => {
   // filter based on item status
   if (status && QUERY_STATUS[status as keyof typeof QUERY_STATUS]) {
     collectionRef = collectionRef.where('status', '==', status);
+  }
+
+  // filter based on createdAt date
+  if (startDate) {
+    const timeStamp = Timestamp.fromMillis(startDate as number);
+    collectionRef = collectionRef.where('createdAt', '<=', timeStamp);
+  }
+
+  // filter based on updatedAt date
+  if (endDate) {
+    collectionRef = collectionRef.where('createdAt', '>=', endDate);
   }
 
   // sort based on date they were created
@@ -21,15 +34,10 @@ export const applyFirestoreFilters = (collectionRef:  CollectionRefServerSide, {
       collectionRef = collectionRef.orderBy('createdAt', ORDER_BY.DESC);
       break;
   }
-
+  
   // filter based on number of items to fetch
   if(numberOfItems) {
     collectionRef = collectionRef.limit(numberOfItems);
-  }
-
-  // filter based on the last item fetched
-  if (lastItem) {
-    collectionRef = collectionRef.startAfter(lastItem);
   }
 
   return collectionRef;
