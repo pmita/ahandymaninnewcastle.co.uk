@@ -6,8 +6,8 @@ export interface IFirestoreFilters {
   numberOfItems?: number | null;
   status?: string | null;
   sort?: string | null;
-  // lastItem?: string | Timestamp | null;
-  startDate?: string | Timestamp | null | number;
+  lastItem?: string | Timestamp | null | number | Date;
+  startDate?: string | Timestamp | null | number | Date;
   endDate?: string | Timestamp | null;
 }
 
