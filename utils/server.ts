@@ -25,7 +25,8 @@ export const applyFirestoreFilters = (collectionRef:  CollectionRefServerSide, {
 
   // db query to fetch items past certain timestatmp
   if (lastItem) {
-    const timeStamp = Timestamp.fromMillis(lastItem as number);
+    // const timeStamp = Timestamp.fromMillis(lastItem as number);
+    const timeStamp = Timestamp.fromDate(lastItem as Date);
     collectionRef = collectionRef.startAfter(timeStamp)
   }
   
