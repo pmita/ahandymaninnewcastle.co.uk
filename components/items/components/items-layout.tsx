@@ -27,6 +27,8 @@ export const ItemsLayout = ({ items }: { items: IQueryItem[] }) => {
   const searchParams = useSearchParams();
   const status = searchParams.get('status') || 'ALL';
   const display = searchParams.get('display') || 'GRID';
+  const sort = searchParams.get('sort') || 'desc';
+  const limit = searchParams.get('limit') || itemsPerPage;
   const {
     data,
     fetchNextPage,
@@ -41,9 +43,9 @@ export const ItemsLayout = ({ items }: { items: IQueryItem[] }) => {
     },
     initialPageParam: { 
       status,
-      numberOfItems: itemsPerPage,
-      sort: 'desc',
-      lastItem: null 
+      limit,
+      sort,
+      startAfter: null 
     },
     getNextPageParam: (lastPage) => {
       const lastItem = lastPage[lastPage.length - 1]
@@ -51,13 +53,13 @@ export const ItemsLayout = ({ items }: { items: IQueryItem[] }) => {
       ? new Date(lastItem.createdAt)
       : lastItem.createdAt;
 
-      return lastPage.length < itemsPerPage
+      return lastPage.length < Number(limit)
         ? undefined 
         : {       
           status,
-          numberOfItems: itemsPerPage,
-          sort: 'desc',
-          lastItem: lastItemTimestamp 
+          limit,
+          sort,
+          startAfter: lastItemTimestamp 
         };
     },
     

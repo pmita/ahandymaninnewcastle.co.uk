@@ -2,10 +2,10 @@ import { CollectionRefServerSide, IFirestoreFilters, ORDER_BY, QUERY_STATUS } fr
 import { Timestamp } from "@/firebase/server";
 
 export const applyFirestoreFilters = (collectionRef:  CollectionRefServerSide, { 
-  numberOfItems = null, 
+  limit = null, 
   status = null, 
   sort = null,
-  lastItem = null
+  startAfter = null
 }: IFirestoreFilters) => {
   // db query based on status
   if (status && QUERY_STATUS[status as keyof typeof QUERY_STATUS]) {
@@ -24,15 +24,14 @@ export const applyFirestoreFilters = (collectionRef:  CollectionRefServerSide, {
   }
 
   // db query to fetch items past certain timestatmp
-  if (lastItem) {
-    // const timeStamp = Timestamp.fromMillis(lastItem as number);
-    const timeStamp = Timestamp.fromDate(lastItem as Date);
+  if (startAfter) {
+    const timeStamp = Timestamp.fromDate(startAfter as Date);
     collectionRef = collectionRef.startAfter(timeStamp)
   }
   
   // fdb query based on number of items I need back 
-  if(numberOfItems) {
-    collectionRef = collectionRef.limit(numberOfItems);
+  if(limit) {
+    collectionRef = collectionRef.limit(limit);
   }
 
   return collectionRef;
