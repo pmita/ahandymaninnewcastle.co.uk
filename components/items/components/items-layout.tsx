@@ -41,12 +41,9 @@ export const ItemsLayout = ({ items }: { items: IQueryItem[] }) => {
     queryFn: async ({ pageParam }: { pageParam: any}) => {
       return await getCollectionData('queries', pageParam);
     },
-    initialPageParam: { 
-      status,
-      limit,
-      sort,
-      startAfter: null 
-    },
+    initialData: { pages: [items], pageParams: [{ status, limit, sort, startAfter: null }]},
+    initialPageParam: { status, limit, sort, startAfter: null },
+    staleTime: 60 * 1000,
     getNextPageParam: (lastPage) => {
       const lastItem = lastPage[lastPage.length - 1]
       const lastItemTimestamp = typeof lastItem.createdAt === 'number'
@@ -55,12 +52,7 @@ export const ItemsLayout = ({ items }: { items: IQueryItem[] }) => {
 
       return lastPage.length < Number(limit)
         ? undefined 
-        : {       
-          status,
-          limit,
-          sort,
-          startAfter: lastItemTimestamp 
-        };
+        : { status, limit, sort, startAfter: lastItemTimestamp };
     },
     
   });
