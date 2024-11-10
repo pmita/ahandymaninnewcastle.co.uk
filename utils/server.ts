@@ -5,27 +5,14 @@ export const applyFirestoreFilters = (collectionRef:  CollectionRefServerSide, {
   numberOfItems = null, 
   status = null, 
   sort = null,
-  startDate = null,
-  endDate = null,
   lastItem = null
 }: IFirestoreFilters) => {
-  // filter based on item status
+  // db query based on status
   if (status && QUERY_STATUS[status as keyof typeof QUERY_STATUS]) {
     collectionRef = collectionRef.where('status', '==', status);
   }
 
-  // filter based on createdAt date
-  if (startDate) {
-    const timeStamp = Timestamp.fromMillis(startDate as number);
-    collectionRef = collectionRef.where('createdAt', '<=', timeStamp);
-  }
-
-  // filter based on updatedAt date
-  if (endDate) {
-    collectionRef = collectionRef.where('createdAt', '>=', endDate);
-  }
-
-  // sort based on date they were created
+  // db query based on asc/desc order
   switch(sort) {
     case ORDER_BY.ASC:
       collectionRef = collectionRef.orderBy('createdAt', ORDER_BY.ASC);
@@ -36,12 +23,13 @@ export const applyFirestoreFilters = (collectionRef:  CollectionRefServerSide, {
       break;
   }
 
+  // db query to fetch items past certain timestatmp
   if (lastItem) {
     const timeStamp = Timestamp.fromMillis(lastItem as number);
     collectionRef = collectionRef.startAfter(timeStamp)
   }
   
-  // filter based on number of items to fetch
+  // fdb query based on number of items I need back 
   if(numberOfItems) {
     collectionRef = collectionRef.limit(numberOfItems);
   }
