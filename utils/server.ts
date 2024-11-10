@@ -1,17 +1,18 @@
 import { CollectionRefServerSide, IFirestoreFilters, ORDER_BY, QUERY_STATUS } from "@/types/firestore";
+import { Timestamp } from "@/firebase/server";
 
 export const applyFirestoreFilters = (collectionRef:  CollectionRefServerSide, { 
-  numberOfItems = null, 
+  limit = null, 
   status = null, 
   sort = null,
-  lastItem = null
+  startAfter = null
 }: IFirestoreFilters) => {
-  // filter based on item status
+  // db query based on status
   if (status && QUERY_STATUS[status as keyof typeof QUERY_STATUS]) {
     collectionRef = collectionRef.where('status', '==', status);
   }
 
-  // sort based on date they were created
+  // db query based on asc/desc order
   switch(sort) {
     case ORDER_BY.ASC:
       collectionRef = collectionRef.orderBy('createdAt', ORDER_BY.ASC);
@@ -22,14 +23,15 @@ export const applyFirestoreFilters = (collectionRef:  CollectionRefServerSide, {
       break;
   }
 
-  // filter based on number of items to fetch
-  if(numberOfItems) {
-    collectionRef = collectionRef.limit(numberOfItems);
+  // db query to fetch items past certain timestatmp
+  if (startAfter) {
+    const timeStamp = Timestamp.fromDate(startAfter as Date);
+    collectionRef = collectionRef.startAfter(timeStamp)
   }
-
-  // filter based on the last item fetched
-  if (lastItem) {
-    collectionRef = collectionRef.startAfter(lastItem);
+  
+  // fdb query based on number of items I need back 
+  if(limit) {
+    collectionRef = collectionRef.limit(limit);
   }
 
   return collectionRef;

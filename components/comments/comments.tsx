@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 // COMPONENTS
 import { Card, CardDescription, CardFooter } from "../ui/card";
 import { ItemStatus } from "../item/components/item-status";
-import { AddComment } from "./components/add-comment";
+import { AddComment } from "./comments/add-comment";
 // TYPES
 import { IComments } from "@/types/firestore";
 
@@ -32,7 +32,7 @@ export const Comments = ({
       return await getCollectionData(`queries/${id}/comments`, { sort: 'asc' });
     },
     initialData: comments,
-  })
+  });
 
   return (
     <>

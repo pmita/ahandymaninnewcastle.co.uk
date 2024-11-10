@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 // FIREBASE SERVICES
 import { getAuth } from "firebase/auth";
+import { Timestamp } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API,
@@ -15,5 +16,7 @@ const app = initializeApp(firebaseConfig);
 
 // SERVICES
 const auth = getAuth(app);
+// SERVICES 
+const fromMillis = (millis: number) => Timestamp.fromMillis(millis);
 
-export { app, auth };
+export { app, auth, fromMillis };

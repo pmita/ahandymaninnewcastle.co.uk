@@ -3,10 +3,10 @@ import { CollectionReference, Query, DocumentData, Timestamp } from 'firebase-ad
 export type CollectionRefServerSide = CollectionReference<DocumentData> | Query<DocumentData>;
 
 export interface IFirestoreFilters {
-  numberOfItems?: number | null;
+  limit?: number | null;
   status?: string | null;
   sort?: string | null;
-  lastItem?: string | Timestamp | null;
+  startAfter?: number | Date | null;
 }
 
 export enum QUERY_STATUS {

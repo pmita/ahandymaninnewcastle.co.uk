@@ -5,10 +5,11 @@ import { useSearchParams } from "next/navigation"
 // DATA
 import { getCollectionData } from "@/data/firestore"
 // PACKAGES
-import { useQuery } from "@tanstack/react-query"
+import { useInfiniteQuery } from "@tanstack/react-query"
 // COMPONENTS
 import { ItemsInTable } from "./items-in-table";
 import { ItemsInGrid } from "./items-in-grid";
+import { Button, buttonVariants } from "@/components/ui/button"
 // TYPES
 import { IQueryItem } from "@/types/firestore";
 
@@ -19,29 +20,62 @@ const ComponentType: ComponentTypeMap = {
   'TABLE': ItemsInTable,
 }
 
+const itemsPerPage = 2;
+
 export const ItemsLayout = ({ items }: { items: IQueryItem[] }) => {
   // STATE && VARIABLES
-  const seatchParams = useSearchParams();
-  const status = seatchParams.get('status') || 'ALL';
-  const display = seatchParams.get('display') || 'GRID';
-  const { data } = useQuery<FirebaseFirestore.DocumentData[]>({
+  const searchParams = useSearchParams();
+  const status = searchParams.get('status') || 'ALL';
+  const display = searchParams.get('display') || 'GRID';
+  const sort = searchParams.get('sort') || 'desc';
+  const limit = searchParams.get('limit') || itemsPerPage;
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+    isError,
+  } = useInfiniteQuery<FirebaseFirestore.DocumentData[]>({
     queryKey: ['queries', { status }],
-    queryFn: async () => {
-      return await getCollectionData('queries', {
-        status,
-        numberOfItems: 5,
-        sort: 'desc',
-      });
+    queryFn: async ({ pageParam }: { pageParam: any}) => {
+      return await getCollectionData('queries', pageParam);
     },
-    initialData: items,
-  })
+    initialData: { pages: [items], pageParams: [{ status, limit, sort, startAfter: null }]},
+    initialPageParam: { status, limit, sort, startAfter: null },
+    staleTime: 60 * 1000,
+    getNextPageParam: (lastPage) => {
+      const lastItem = lastPage[lastPage.length - 1]
+      const lastItemTimestamp = typeof lastItem.createdAt === 'number'
+      ? new Date(lastItem.createdAt)
+      : lastItem.createdAt;
+
+      return lastPage.length < Number(limit)
+        ? undefined 
+        : { status, limit, sort, startAfter: lastItemTimestamp };
+    },
+    
+  });
+
+  const allItems = data?.pages.flat() ?? [];
 
   // LAYOUT
   const Component = ComponentType[display] || ComponentType['TABLE'];
 
-  if (!data.length) return null;
-  
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error loading items.</div>;
+  if (!allItems.length) return <div>No items found.</div>;
+
   return (
-    <Component items={data as IQueryItem[]} />
-  )
+    <div>
+      <Component items={allItems as IQueryItem[]} />
+      <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+        {hasNextPage ? (
+          <Button className={buttonVariants({ variant: 'default', size: 'lg' })} onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
+            {isFetchingNextPage ? 'Loading...' : 'Load More'}
+          </Button>
+        ) : <h1>No more items</h1>}
+      </div>
+    </div>
+  );
 }

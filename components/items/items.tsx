@@ -9,7 +9,7 @@ export default async function Items({ status }: { status: string }) {
   // SERVER LAND
   const items = await getCollectionData('queries', {
     status,
-    numberOfItems: 5,
+    limit: 2,
     sort: 'desc', 
   });
 
