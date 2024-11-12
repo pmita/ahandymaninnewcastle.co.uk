@@ -54,7 +54,6 @@ export const ItemsLayout = ({ items }: { items: IQueryItem[] }) => {
         ? undefined 
         : { status, limit, sort, startAfter: lastItemTimestamp };
     },
-    
   });
 
   const allItems = data?.pages.flat() ?? [];
