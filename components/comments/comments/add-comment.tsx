@@ -2,24 +2,16 @@
 
 // REACT
 import { useCallback } from "react";
-// DATA
-import { addQueryToDB } from "@/data/firestore";
 // PACKAGES
 import { useForm } from "react-hook-form";
-import { useQueryClient, useMutation } from "@tanstack/react-query";
+// HOOKS
+import { useAddComment } from "@/hooks/useAddComment";
 // COMPONENTS
 import { FieldWithLabel } from "@/components/field-with-label"
 import { Button } from "@/components/ui/button";
-// TYPES
-import { IComments } from "@/types/firestore";
 
 interface IAddCommentForm {
   comment: string;
-}
-
-interface IAddCommentMutation {
-  comment: string;
-  status: string;
 }
 
 export const AddComment = ({ id, status }: { id: string, status: string }) => {
@@ -31,33 +23,7 @@ export const AddComment = ({ id, status }: { id: string, status: string }) => {
       comment: '',
     }
   });
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationKey: ['comments', { id }],
-    mutationFn: async ({ comment, status }: IAddCommentMutation) => {
-      await addQueryToDB(`queries/${id}/comments`, { content: comment, status });
-    },
-    onMutate: async ({ comment, status }) => {
-      await queryClient.cancelQueries({ queryKey: ['comments', { id }] });
-
-      const previousData = queryClient.getQueryData(['comments', { id }]);
-
-      queryClient.setQueryData(['comments', { id }], (oldData: IComments[]) => {
-        return [
-          ...oldData,
-          { content: comment, status }
-        ]
-      });
-
-      return { previousData };
-    },
-    onError: (_error, _variables, context) => {
-      queryClient.setQueryData(['comments', { id }], context?.previousData);
-    },
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ['comments', { id }] });
-    },
-  })
+  const mutation = useAddComment(id);
 
   // EVENTS
   const onSubmit = useCallback(async ({ comment }: IAddCommentForm) => {
