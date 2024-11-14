@@ -23,7 +23,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Se
     queryKey: ['queries', { status, limit, sort }],
     initialPageParam: { 
       status: status ?? 'ALL', 
-      limit: limit ?? BASE_LIMIT, 
+      limit: limit ? Number(limit) : BASE_LIMIT, 
       sort: sort ?? 'desc', 
       startAfter: null 
     },

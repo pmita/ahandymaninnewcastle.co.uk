@@ -3,7 +3,7 @@ import { CollectionReference, Query, DocumentData, Timestamp } from 'firebase-ad
 export type CollectionRefServerSide = CollectionReference<DocumentData> | Query<DocumentData>;
 
 export interface IFirestoreFilters {
-  limit?: number | string;
+  limit?: number | string | null;
   status?: string | null;
   sort?: string | null;
   startAfter?: number | Date | null;
