@@ -27,13 +27,12 @@ export interface IFieldWithLabel {
   className?: string;
 }
 
-export interface IContactForm {
+export interface IQueryForm {
   fullName: string;
   email: string;
   mobile: string;
   location: string;
   additionalInfo: string;
-  goodToKnow: string;
 }
 
 export type ContactFormErrors = {
