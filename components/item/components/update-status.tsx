@@ -4,13 +4,15 @@
 import { useCallback } from "react";
 // PACKAGES
 import { useForm } from "react-hook-form"
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+// HOOKS
+import { useUpdateItemStatus } from "@/hooks/useUpdateItemStatus";
+import { useItemData } from "@/hooks/useItemData";
 // COMPONENTS
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Button } from "@/components/ui/button";
 import { ItemStatus } from "@/components/item/components/item-status";
-// DATA
-import { getDocumentData, updateDocumentData } from "@/data/firestore";
+// TYPES
+import { IQueryItem } from "@/types/firestore";
 
 type IStatusForm = {
   status: string;
@@ -21,36 +23,8 @@ export const UpdateStatus = ({ id, status }: { id: string, status: string }) => 
   const { register, handleSubmit, setValue } = useForm<IStatusForm>({
     defaultValues: { status },
   });
-  const queryClient = useQueryClient();
-  const { data } = useQuery({
-    queryKey: ['queries', { id }],
-    queryFn: () => getDocumentData('queries', id),
-    initialData: { status },
-  });
-  const mutation = useMutation({
-    mutationKey: ['queries', { id }],
-    mutationFn: async ({ status: newStatus }: IStatusForm) => {
-      await updateDocumentData('queries', id, { status: newStatus });
-    },
-    onMutate: async ({ status: newStatus }) => {
-      await queryClient.cancelQueries({ queryKey: ['queries', { id }] });
-
-      const previousData = queryClient.getQueryData(['queries', { id }]);
-
-      queryClient.setQueryData(['queries', { id }], (oldData: any) => ({
-        ...oldData,
-        status: newStatus,
-      }));
-
-      return { previousData };
-    },
-    onError: (_error, _variables, context) => {
-      queryClient.setQueryData(['queries', id], context?.previousData);
-    },
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ['queries', { id }] });
-    },
-  })
+  const { data } = useItemData(id);
+  const mutation = useUpdateItemStatus(id);
 
   // EVENTS
   const onSubmit = useCallback(({ status }: IStatusForm) => {
@@ -61,12 +35,12 @@ export const UpdateStatus = ({ id, status }: { id: string, status: string }) => 
     <div className="rounded-lg bg-neutral flex flex-col justify-center items-stretch gap-4 p-2 lg:p-4">
       <div className="flex flex-row justify-center items-center gap-4">
         <span>Status</span>
-        <ItemStatus status={data.status} />
+        <ItemStatus status={(data as IQueryItem).status} />
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-row justify-center items-center gap-2">
         <Select 
           {...register('status', { required: true })}
-          defaultValue={data.status}
+          defaultValue={(data as IQueryItem).status}
           onValueChange={(value) => setValue('status', value)}
         >
           <SelectTrigger className="px-2 py-1 rounded-md border border-gray-300 focus:outline-none focus:ring focus:ring-blue-500">
