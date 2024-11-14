@@ -1,5 +1,5 @@
 // NEXT
-import router from "next/router";
+import { useRouter } from "next/navigation";
 // PACKAGES
 import { useMutation } from "@tanstack/react-query";
 // HOOKS
@@ -10,6 +10,7 @@ import { signUserIn, saveFirebaseCookie } from "@/utils/auth";
 
 export const useSignin = () => {
     // STATE && VARIABLES
+    const router = useRouter();
     const { setUser } = useAuth();
     return useMutation({
       mutationKey: ['signin'],
