@@ -1,1 +1,1 @@
-export const BASE_LIMIT = 10;
+export const BASE_LIMIT = 2;
