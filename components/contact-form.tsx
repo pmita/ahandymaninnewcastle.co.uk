@@ -1,33 +1,24 @@
 "use client"
 
-// SERVER ACTIONS
-import { addQueryToDB } from "@/data/firestore";
+// HOOKS
+import { useAddQuery } from "@/hooks/useAddQuery";
 // COMPONENTS
 import { Button } from "@/components/ui/button";
 import { FieldWithLabel } from "@/components/field-with-label";
 // PACKAGES
 import { type SubmitHandler, useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
 // CONFIG
 import { contactForm, honeyPotInput } from "@/config/forms";
 // TYPES
-import { IContactForm } from "@/types";
+import { IQueryForm } from "@/types";
 
+interface IContactForm extends IQueryForm {
+  goodToKnow: string;
+}
 
 export const ContactForm = () => {
   // STATE & HOOKS
-  const mutation = useMutation({
-    mutationKey: ['addQueryToDB'],
-    mutationFn: async (formDetails: IContactForm) => {
-      await addQueryToDB('queries', formDetails);
-    },
-    onError: (error) => {
-      console.log(error);
-    },
-    onSuccess: () => {
-      console.log('Query added to the database');
-    }
-  });
+  const mutation = useAddQuery();
   const { register, handleSubmit, formState: { errors }, reset} = useForm<IContactForm>({
     mode: 'onBlur',
     reValidateMode: 'onChange',
@@ -50,8 +41,8 @@ export const ContactForm = () => {
         email, 
         mobile, 
         location, 
-        additionalInfo, 
-        goodToKnow 
+        additionalInfo,
+        status: 'INITIAL',
       });
     }
 

@@ -31,7 +31,7 @@ export const applyFirestoreFilters = (collectionRef:  CollectionRefServerSide, {
   
   // fdb query based on number of items I need back 
   if(limit) {
-    collectionRef = collectionRef.limit(limit);
+    collectionRef = collectionRef.limit(Number(limit));
   }
 
   return collectionRef;

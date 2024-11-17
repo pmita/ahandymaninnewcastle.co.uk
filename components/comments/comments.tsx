@@ -1,9 +1,7 @@
 "use client"
 
-// DATA
-import { getCollectionData } from "@/data/firestore";
-// PACKAGES
-import { useQuery } from "@tanstack/react-query";
+// HOOKS
+import { useCommentsData } from "@/hooks/useCommentsData";
 // COMPONENTS
 import { Card, CardDescription, CardFooter } from "../ui/card";
 import { ItemStatus } from "../item/components/item-status";
@@ -15,24 +13,18 @@ import { IComments } from "@/types/firestore";
 type CommentsProps = {
   id: string;
   status: string;
-  comments: IComments[];
+  comments?: IComments[];
   canAddComments?: boolean;
 }
 
 export const Comments = ({
   id,
   status,
-  comments,
+  comments = [],
   canAddComments = true,
 }: CommentsProps) => {
   // STATE && VARIABLES
-  const { data } = useQuery({
-    queryKey: ['comments', { id }],
-    queryFn: async () => {
-      return await getCollectionData(`queries/${id}/comments`, { sort: 'asc' });
-    },
-    initialData: comments,
-  });
+  const { data } = useCommentsData(id);
 
   return (
     <>

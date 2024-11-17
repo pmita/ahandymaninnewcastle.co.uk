@@ -1,9 +1,12 @@
+// NEXT
+import { redirect } from 'next/navigation';
+// DATA
+import { validateUserSS } from '@/data/auth';
 // COMPONENTS
 import { AdminNavbar } from '@/components/layout/admin-navbar';
-import { validateUserSS } from '@/data/auth';
-import { redirect } from 'next/navigation';
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
+  // SERVER LAND
   const isUserValid = await validateUserSS();
 
   if (!isUserValid) redirect("/signin");
