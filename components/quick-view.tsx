@@ -5,14 +5,20 @@ import { IQueryItem } from "@/types/firestore"
 // COMPONENTS
 import { Sheet, SheetContent, SheetHeader, SheetTrigger, SheetTitle } from "./ui/sheet"
 import { Comments } from "./comments/comments"
-import { Button } from "./ui/button"
+import { Button, buttonVariants } from "./ui/button"
 import { ItemDetails } from "./details/item-details"
+// UTILS
+import { cn } from "@/utils/helpers"
 
 export const QuickView = ({ item }: { item: IQueryItem}) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="default" className="w-full">Quick View</Button>
+        <Button 
+          className={cn(buttonVariants({ variant: 'outline'}), "w-full border-[3px] border-secondary")}
+        >
+          Quick View
+        </Button>
       </SheetTrigger>
       <SheetContent className="w-full" side="right">
         <SheetHeader className="pb-5">

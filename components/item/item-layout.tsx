@@ -16,7 +16,7 @@ export default function ItemLayout({ id }: { id: string }) {
   if (!item) return null;
 
   return (
-    <section className="flex flex-col justify-center items-stretch  gap-4 p-8">
+    <>
       <div className="grid grid-cols-1 grid-rows-[250px] gap-4 lg:grid-cols-2 lg:gap-8">
         <ItemDetails item={item as IQueryItem} />
         <UpdateStatus id={item.id} status={item.status} />
@@ -24,6 +24,6 @@ export default function ItemLayout({ id }: { id: string }) {
           <Comments id={item.id} status={item.status} />
         </div>
       </div> 
-    </section>
+    </>
   );
 } 

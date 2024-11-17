@@ -6,6 +6,8 @@ import { getCollectionData } from '@/data/firestore';
 import { QueryClient, HydrationBoundary, dehydrate } from "@tanstack/react-query";
 // COMPONENTS
 import { ItemsLayout } from "@/components/items/items-layout";
+import { StatusFilters } from "@/components/status-filters";
+import { LayoutFilters } from "@/components/layout-filters";
 // UTILS
 import { BASE_LIMIT } from "@/utils/constants";
 
@@ -33,6 +35,10 @@ export default async function DashboardPage({ searchParams }: { searchParams: Se
 
   return (
     <>
+      <section className="flex flex-row justify-between items-stretch flex-wrap gap-4 pt-4">
+        <StatusFilters status={status || 'ALL'} />
+        <LayoutFilters layoutView={display || 'GRID'} />
+      </section>
       <Suspense fallback={(<h1>Loading ...</h1>)}>
         <HydrationBoundary state={dehydrate(queryClient)}>
           <ItemsLayout />

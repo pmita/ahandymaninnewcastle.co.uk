@@ -38,7 +38,7 @@ export const StatusFilters = ({ status }: { status: string }) => {
           key={itemStatus}
           className={cn(buttonVariants({
             variant: (currentOption === itemStatus ? 'secondary' : 'outline'),
-            size: 'lg',
+            size: 'sm',
           }), "rounded-none border-[3px] border-secondary")}
           onClick={() => updateSearchParams(itemStatus)}
         >

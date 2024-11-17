@@ -39,7 +39,7 @@ export const LayoutFilters = ({ layoutView }: { layoutView: string }) => {
           key={item}
           className={cn(buttonVariants({
             variant: (layout === item ? 'secondary' : 'outline'),
-            size: 'lg',
+            size: 'sm',
           }), "rounded-none border-[3px] border-secondary")}
           onClick={() => updateSearchParams(item)}
         >
