@@ -33,6 +33,7 @@ export interface IQueryForm {
   mobile: string;
   location: string;
   additionalInfo: string;
+  status: string;
 }
 
 export type ContactFormErrors = {

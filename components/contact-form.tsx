@@ -41,7 +41,8 @@ export const ContactForm = () => {
         email, 
         mobile, 
         location, 
-        additionalInfo, 
+        additionalInfo,
+        status: 'INITIAL',
       });
     }
 
