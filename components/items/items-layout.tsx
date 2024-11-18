@@ -7,6 +7,7 @@ import { useInfiniteItemsData } from '@/hooks/useInfiniteItemsData';
 import { ItemsInTable } from "./components/items-in-table";
 import { ItemsInGrid } from "./components/items-in-grid";
 import { Button, buttonVariants } from "@/components/ui/button"
+import { LoadingSection } from "../layout/loading-section";
 // TYPES
 import { IQueryItem } from "@/types/firestore";
 
@@ -34,7 +35,7 @@ export const ItemsLayout = () => {
   // LAYOUT
   const Component = ComponentType[display] || ComponentType['TABLE'];
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingSection />;
   if (isError) return <div>Error loading items.</div>;
   if (!allItems.length) return <div>No items found.</div>;
 
