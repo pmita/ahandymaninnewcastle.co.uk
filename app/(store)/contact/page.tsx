@@ -1,5 +1,5 @@
 // COMPONENTS
-import { ContactForm } from "@/components/contact-form";
+import { ContactForm } from "@/components/forms/contact-form";
 
 
 export default async function ContactPage() {
