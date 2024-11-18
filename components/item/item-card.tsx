@@ -5,9 +5,11 @@ import { Card, CardDescription, CardFooter, CardHeader } from '@/components/ui/c
 import { buttonVariants } from '@/components/ui/button';
 import { ItemStatus } from './components/item-status';
 import { QuickView } from '@/components/quick-view';
+import { FormatedTime } from '../formated-time';
+// UTILS
+import { truncate } from '@/utils/helpers';
 // TYPES
 import { IQueryItem } from '@/types/firestore';
-// import { FormatedTime } from '@/components/FormatedTime';
 
 export const ItemCard = ({ item }: { item : IQueryItem | null }) => {
 
@@ -15,13 +17,12 @@ export const ItemCard = ({ item }: { item : IQueryItem | null }) => {
 
   return (
     <Card className="flex flex-col justify-center items-stretch">
-      <CardHeader className="flex-1 justify-between items-center">
-        <ItemStatus status="INITIAL"/>
-        {/*<FormatedTime time={item.createdAt} /> */}
+      <CardHeader className="flex-1 flex flex-row justify-between items-center">
+        <ItemStatus status={item.status} />
+        <FormatedTime time={item.createdAt} />
       </CardHeader>
       <CardDescription className="flex-1 p-6">
-        {/* {truncate(item.additionalInfo, 150)} */}
-        {item.additionalInfo}
+        {truncate(item.additionalInfo, 150)}
       </CardDescription>
       <CardFooter className="flex-1 flex-col justify-center items-stretch gap-2">
         <Link 
