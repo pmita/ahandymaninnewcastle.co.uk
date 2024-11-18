@@ -1,14 +1,16 @@
 "use client"
 
-import { IQueryItem } from "@/types/firestore"
+// COMPONENTS
 import { Table, TableBody, TableCell, TableRow } from "../ui/table"
 import { ItemStatus } from "../item/components/item-status"
+// TYPES
+import { IQueryItem } from "@/types/firestore"
 
 
 export const ItemDetails = ({ item, showStatus = false }: { item: IQueryItem, showStatus?: boolean }) => {
 
   return (
-    <Table>
+    <Table className="w-full h-full">
       <TableBody>
         <TableRow>
           <TableCell>ID: {item.id}</TableCell>
