@@ -3,7 +3,7 @@
 // HOOKS
 import { useAddQuery } from "@/hooks/useAddQuery";
 // COMPONENTS
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { FieldWithLabel } from "@/components/field-with-label";
 // PACKAGES
 import { type SubmitHandler, useForm } from "react-hook-form";
@@ -77,7 +77,7 @@ export const ContactForm = () => {
         />
       )}
 
-      <Button type="submit" disabled={mutation.isPending}>
+      <Button className={buttonVariants({ size: 'lg' })} type="submit" disabled={mutation.isPending}>
         {mutation.isPending ? 'Sending...' : 'Submit'}
       </Button>
     </form>

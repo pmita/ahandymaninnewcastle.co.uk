@@ -14,7 +14,9 @@ export default async function DashboardLayout({ children }: { children: React.Re
   return (
     <>
       <AdminNavbar />
-      {children}
+      <div className="min-h-[90vh] bg-muted p-5">
+        {children}
+      </div>
     </>
   )
 }

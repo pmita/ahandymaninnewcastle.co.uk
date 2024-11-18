@@ -23,12 +23,6 @@ export const Footer = () => {
       <BannerDescription className="text-md font-roboto font-bold text-neutral">
         <div className="text-center text-neutral flex justify-center gap-5">
           <Link 
-            href="/projects"
-            className="text-neutral text-lg font-poppins font-bold hover:opacity-80"
-          >
-            Projects
-          </Link>
-          <Link 
             href="/contact"
             className="text-neutral text-lg font-poppins font-bold hover:opacity-80"
           >

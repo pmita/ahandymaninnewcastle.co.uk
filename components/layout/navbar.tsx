@@ -1,5 +1,7 @@
 // NEXT
 import Link from "next/link"
+// COMPONENTS
+import { buttonVariants } from "../ui/button"
 
 export async function NavBar() {
   return (
@@ -10,24 +12,12 @@ export async function NavBar() {
       >
         RefubCity
       </Link>
-      <ul className="flex gap-4 pt-1.5 text-md lg:pt-0 lg:text-lg">
-        <li className="lg:px-4">
-          <Link 
-            href="/projects" 
-            className="text-primary font-semibold hover:opacity-80"
-          >
-            Projects
-          </Link>
-        </li>
-        <li className="lg:pl-4">
-          <Link 
-            href="/contact" 
-            className="text-primary font-semibold hover:opacity-80"
-          >
-            Contact
-          </Link>
-        </li>
-      </ul>
+      <Link 
+        href="/contact" 
+        className={buttonVariants({ size: 'lg' })}
+      >
+        Contact
+      </Link>
     </nav>
   )
 }

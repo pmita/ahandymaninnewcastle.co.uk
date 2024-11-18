@@ -32,7 +32,7 @@ export const StatusFilters = ({ status }: { status: string }) => {
   }, [replace, searchParams, pathname]);
 
   return (
-    <div className="flex flex-wrap flex-row justify-start items-center gap-2">
+    <div className="flex flex-wrap justify-start items-center gap-2">
       {['ALL', ...baseOptions].map((itemStatus: string) => (
         <Button
           key={itemStatus}

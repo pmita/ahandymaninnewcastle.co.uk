@@ -6,21 +6,18 @@ import { useCommentsData } from "@/hooks/useCommentsData";
 import { Card, CardDescription, CardFooter } from "../ui/card";
 import { ItemStatus } from "../item/components/item-status";
 import { AddComment } from "./comments/add-comment";
-// TYPES
-import { IComments } from "@/types/firestore";
+import { FormatedTime } from "../formated-time";
 
 
 type CommentsProps = {
   id: string;
   status: string;
-  comments?: IComments[];
   canAddComments?: boolean;
 }
 
 export const Comments = ({
   id,
   status,
-  comments = [],
   canAddComments = true,
 }: CommentsProps) => {
   // STATE && VARIABLES
@@ -36,6 +33,7 @@ export const Comments = ({
               <CardDescription className="p-4">{comment.content}</CardDescription>
               <CardFooter className="flex-row justify-between p-4">
                 <ItemStatus status={comment.status} />
+                <FormatedTime time={comment.createdAt} />
               </CardFooter>
             </Card>
           ))}

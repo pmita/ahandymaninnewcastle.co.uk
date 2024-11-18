@@ -39,8 +39,8 @@ export const FaqSection = () => {
   ), [faq]);
 
   return (
-    <section className={cn(bannerVariants({ variant: "center", size: "full", className: "flex-col items-stretch gap-2.5 py-5" }))}>
-      <h2 className="font-font font-poppins text-xl text-alternate">FAQs</h2>
+    <section className={cn(bannerVariants({ variant: "center", size: "half", className: "flex flex-col items-center justify-center p-5" }))}>
+      <h2 className="font-font font-poppins font-bold text-2xl text-alternate">FAQs</h2>
       {renderContent()}
     </section>
   );

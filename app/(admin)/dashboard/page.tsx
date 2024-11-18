@@ -8,6 +8,7 @@ import { QueryClient, HydrationBoundary, dehydrate } from "@tanstack/react-query
 import { ItemsLayout } from "@/components/items/items-layout";
 import { StatusFilters } from "@/components/status-filters";
 import { LayoutFilters } from "@/components/layout-filters";
+import { LoadingSection } from "@/components/layout/loading-section";
 // UTILS
 import { BASE_LIMIT } from "@/utils/constants";
 
@@ -35,11 +36,11 @@ export default async function DashboardPage({ searchParams }: { searchParams: Se
 
   return (
     <>
-      <section className="flex flex-row justify-between items-stretch flex-wrap gap-4 pt-4">
+      <section className="flex justify-between items-stretch flex-wrap gap-4 my-4">
         <StatusFilters status={status || 'ALL'} />
         <LayoutFilters layoutView={display || 'GRID'} />
       </section>
-      <Suspense fallback={(<h1>Loading ...</h1>)}>
+      <Suspense fallback={(<LoadingSection />)}>
         <HydrationBoundary state={dehydrate(queryClient)}>
           <ItemsLayout />
         </HydrationBoundary>

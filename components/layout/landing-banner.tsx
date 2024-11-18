@@ -15,10 +15,10 @@ import { cn } from "@/utils/helpers";
 
 export const LandingBanner = () => {
   return (
-    <Banner className={cn(bannerVariants({ variant: "center", size: "threeQuarters", className: "flex-col bg-primary rounded-[25px]" }))}>
+    <Banner className={cn(bannerVariants({ variant: "center", className: "flex-col bg-primary min-h-[90vh]" }))}>
     <BannerHeader className="text-center max-w-[350px] sm:max-w-[600px]">
       <BannerTitle 
-        className="text-2xl font-poppins font-bold text-neutral"
+        className="text-3xl font-poppins font-bold text-neutral"
       >
         We paint, we build, we fix all your problems
       </BannerTitle>
@@ -27,7 +27,7 @@ export const LandingBanner = () => {
     <BannerFooter className="text-center text-secondary gap-5">
       <Link 
         href="/contact"
-        className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+        className={cn(buttonVariants({ variant: "outline", size: "lg", className: "border-[3px]" }))}
       >
         Get in touch
       </Link>

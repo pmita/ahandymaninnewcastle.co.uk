@@ -9,7 +9,7 @@ import { useUpdateItemStatus } from "@/hooks/useUpdateItemStatus";
 import { useItemData } from "@/hooks/useItemData";
 // COMPONENTS
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { ItemStatus } from "@/components/item/components/item-status";
 // TYPES
 import { IQueryItem } from "@/types/firestore";
@@ -33,11 +33,11 @@ export const UpdateStatus = ({ id, status }: { id: string, status: string }) => 
   
   return (
     <div className="rounded-lg bg-neutral flex flex-col justify-center items-stretch gap-4 p-2 lg:p-4">
-      <div className="flex flex-row justify-center items-center gap-4">
+      <div className="flex justify-center items-center gap-4">
         <span>Status</span>
         <ItemStatus status={(data as IQueryItem).status} />
       </div>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-row justify-center items-center gap-2">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center items-center gap-2">
         <Select 
           {...register('status', { required: true })}
           defaultValue={(data as IQueryItem).status}
@@ -53,8 +53,8 @@ export const UpdateStatus = ({ id, status }: { id: string, status: string }) => 
           </SelectContent>
         </Select>
 
-        <Button type="submit" disabled={mutation.isPending}>
-          {mutation.isPending ? 'Sending...' : 'Submit'}
+        <Button className={buttonVariants({ variant: 'secondary' })} type="submit" disabled={mutation.isPending}>
+          {mutation.isPending ? 'Sending...' : 'Update'}
         </Button>
         </form>
       </div>
