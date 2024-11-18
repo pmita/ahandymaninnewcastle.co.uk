@@ -33,7 +33,7 @@ export const LayoutFilters = ({ layoutView }: { layoutView: string }) => {
     replace(`${pathName}?${params.toString()}`);
   }
   return (
-    <div className="flex flex-wrap flex-row justify-start items-center">
+    <div className="flex flex-wrap justify-start items-center">
       {['GRID', 'TABLE'].map((item: string) => (
         <Button
           key={item}

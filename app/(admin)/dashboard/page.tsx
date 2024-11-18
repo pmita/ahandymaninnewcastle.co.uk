@@ -35,7 +35,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Se
 
   return (
     <>
-      <section className="flex flex-row justify-between items-stretch flex-wrap gap-4 my-4">
+      <section className="flex justify-between items-stretch flex-wrap gap-4 my-4">
         <StatusFilters status={status || 'ALL'} />
         <LayoutFilters layoutView={display || 'GRID'} />
       </section>

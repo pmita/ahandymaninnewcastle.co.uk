@@ -20,8 +20,8 @@ export default function CourseChapterLayout({ children, params }: CourseChapterL
   const project = allProjects.find((project) => project.slugAsParams === params.slug);
 
   return (
-    <section className="container flex flex-wrap flex-row justify-center items-stretch w-full">
-      <header className="container min-h-[5dvh] bg-alternate flex flex-row justify-start items-center gap-5 p-5 sticky top-0 z-50">
+    <section className="container flex flex-wrap justify-center items-stretch w-full">
+      <header className="container min-h-[5dvh] bg-alternate flex justify-start items-center gap-5 p-5 sticky top-0 z-50">
         <Link 
           href='/projects'
           className={cn(buttonVariants({ variant: 'default', size: "sm" }), "min-w-[75px]")}  

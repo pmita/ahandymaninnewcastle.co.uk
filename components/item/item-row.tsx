@@ -16,7 +16,7 @@ export const ItemRow = ({ item }: { item : IQueryItem | null }) => {
       <TableCell className="font-medium">{item.id}</TableCell>
       <TableCell>{<ItemStatus status="INITIAL"/>}</TableCell>
       <TableCell>{item.additionalInfo}</TableCell>
-      <TableCell className="flex flex-row justify-end gap-4">
+      <TableCell className="flex justify-end gap-4">
         <Link 
             className={(buttonVariants({ variant: 'secondary', size: 'lg' }))}
             href={`/dashboard/${item.id}`}
