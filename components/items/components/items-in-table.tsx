@@ -16,7 +16,6 @@ export const ItemsInTable = ({ items }: { items : IQueryItem[] | null }) => {
 
   return (
     <Table>
-      <TableCaption>A list of your recent invoices.</TableCaption>
       <ItemsTableHeader />
       <TableBody>
         {items.map((item) => (

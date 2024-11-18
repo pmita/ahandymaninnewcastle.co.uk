@@ -15,7 +15,7 @@ export const QuickView = ({ item }: { item: IQueryItem}) => {
     <Sheet>
       <SheetTrigger asChild>
         <Button 
-          className={cn(buttonVariants({ variant: 'outline'}), "w-full border-[3px] border-secondary")}
+          className={cn(buttonVariants({ variant: 'outline', size: 'lg' }), "border-[3px] border-secondary")}
         >
           Quick View
         </Button>

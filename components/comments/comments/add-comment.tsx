@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { useAddComment } from "@/hooks/useAddComment";
 // COMPONENTS
 import { FieldWithLabel } from "@/components/field-with-label"
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 
 interface IAddCommentForm {
   comment: string;
@@ -42,8 +42,8 @@ export const AddComment = ({ id, status }: { id: string, status: string }) => {
         error={errors.comment?.message}
       />
 
-      <Button type="submit" disabled={mutation.isPending}>
-        {mutation.isPending ? 'Sending...' : 'Submit'}
+      <Button className={buttonVariants({ variant: 'secondary' })} type="submit" disabled={mutation.isPending}>
+        {mutation.isPending ? 'Sending...' : 'Add Comment'}
       </Button>
     </form>
   )

@@ -20,7 +20,7 @@ export default function ItemLayout({ id }: { id: string }) {
       <div className="grid grid-cols-1 grid-rows-[250px] gap-4 lg:grid-cols-2 lg:gap-8">
         <ItemDetails item={item as IQueryItem} />
         <UpdateStatus id={item.id} status={item.status} />
-        <div className="rounded-lg bg-neurtal lg:col-span-2 p-4 flex flex-col gap-4 overflow-y-scroll">
+        <div className="rounded-lg bg-neutral lg:col-span-2 p-4 flex flex-col gap-4 overflow-y-scroll">
           <Comments id={item.id} status={item.status} />
         </div>
       </div> 

@@ -38,17 +38,17 @@ export const AdminNavbar = () => {
 
 
   return (
-    <nav className="min-h-[10dvh] w-full flex flex-row justify-between items-center bg-primary px-4 py-6">
+    <nav className="min-h-[10dvh] w-full flex justify-between items-center bg-neutral px-4 py-6">
       <Link 
         href="/" 
-        className="text-lg text-neutral font-poppins font-bold"
+        className="text-lg text-primary font-poppins font-bold"
       >
         RefubCity Admin
       </Link>
 
       <Button 
         className={cn(
-          buttonVariants({ variant: 'secondary', size: 'lg' }), 
+          buttonVariants({ variant: 'secondary' }), 
           "item-stretch"
         )}
         onClick={onClick}
