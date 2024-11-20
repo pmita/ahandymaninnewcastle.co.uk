@@ -1,7 +1,8 @@
 // NEXT
 import type { Metadata } from "next";
-// PACKAGES
-import { ReactQueryProvider } from "@/context/ReactQueryContext";
+// COMPONENTS
+import { CSPostHogProvider } from "./_analytics/provider";
+import { ReactQueryProvider } from "./_react-query/provider";
 // UTILS
 import { roboto, poppins } from "@/utils/fonts";
 import { cn } from "@/utils/helpers";
@@ -21,20 +22,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body 
-        className={cn(
-          "min-h-screen bg-background font-roboto antialiased",
-          roboto.variable,
-          poppins.variable
-        
-        )}
-      >
-        <ReactQueryProvider>
-          <main className="container">
-            {children}
-          </main>
+      <ReactQueryProvider>
+        <CSPostHogProvider>
+          <body 
+            className={cn(
+              "min-h-screen bg-background font-roboto antialiased",
+              roboto.variable,
+              poppins.variable
+            
+            )}
+          >
+              <main className="container">
+                {children}
+              </main>
+          </body>
+        </CSPostHogProvider>
         </ReactQueryProvider>
-      </body>
     </html>
   );
 }

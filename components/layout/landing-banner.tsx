@@ -27,7 +27,7 @@ export const LandingBanner = () => {
     <BannerFooter className="text-center text-secondary gap-5">
       <Link 
         href="/contact"
-        className={cn(buttonVariants({ variant: "outline", size: "lg", className: "border-[3px]" }))}
+        className={cn(buttonVariants({ variant: "outline", size: "lg", className: "outline-none" }))}
       >
         Get in touch
       </Link>
