@@ -2,6 +2,8 @@
 import { addQueryToDB } from "@/data/firestore";
 //PACKAGES
 import { useQueryClient, useMutation } from "@tanstack/react-query";
+// COMPOMNENTS
+import { toast } from "sonner";
 // TYPES
 import { IComments } from "@/types/firestore";
 
@@ -30,9 +32,23 @@ export const useAddComment = (id: string) => {
       },
       onError: (_error, _variables, context) => {
         queryClient.setQueryData(['comments', { id }], context?.previousData);
+        toast("Could not add comment", {
+          description: _error.message,
+          action: {
+            label: "Close",
+            onClick: () => toast.dismiss(),
+          }
+        })
       },
       onSettled: () => {
         queryClient.invalidateQueries({ queryKey: ['comments', { id }] });
+        toast("Success", {
+          description: "Comment added",
+          action: {
+            label: "Close",
+            onClick: () => toast.dismiss(),
+          }
+        })
       },
     })
 }

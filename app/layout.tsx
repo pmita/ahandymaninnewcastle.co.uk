@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 // COMPONENTS
 import { CSPostHogProvider } from "./_analytics/provider";
 import { ReactQueryProvider } from "./_react-query/provider";
+import { Toaster } from "@/components/ui/sonner";
 // UTILS
 import { roboto, poppins } from "@/utils/fonts";
 import { cn } from "@/utils/helpers";
@@ -35,6 +36,7 @@ export default function RootLayout({
               <main className="container">
                 {children}
               </main>
+              <Toaster />
           </body>
         </CSPostHogProvider>
         </ReactQueryProvider>

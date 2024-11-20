@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 // COMPONENTS
 import { Button, buttonVariants } from '@/components/ui/button';
+import { toast } from 'sonner';
 // HOOKS
 import { useAuth } from '@/hooks/useAuth';
 // PACKAGES
@@ -30,6 +31,12 @@ export const AdminNavbar = () => {
     },
     onError: (error) => {
       console.log(error);
+      toast("Something went wrong", {
+        action: {
+          label: "Close",
+          onClick: () => toast.dismiss(),
+        }
+      })
     }
   })
 
