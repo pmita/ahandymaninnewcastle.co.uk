@@ -1,5 +1,7 @@
 "use client"
 
+// NEXT
+import { useRouter } from 'next/navigation';
 // REACT
 import { useCallback } from 'react';
 // COMPONETNS
@@ -21,6 +23,7 @@ interface SignInFormProps {
 
 export const SignInForm = () => {
   // STATE && VARIABLES
+  const router = useRouter();
   const mutation = useSignin();
   const { register, handleSubmit, formState: { errors } } = useForm<SignInFormProps>({
     mode: 'onBlur',
@@ -34,6 +37,8 @@ export const SignInForm = () => {
   // EVENTS
   const onSubmit = useCallback(async ({email, password }: SignInFormProps) => {
     mutation.mutate({ email, password });
+
+    if (mutation.isSuccess) router.push('/dashboard');
   }, []);
 
   return (
