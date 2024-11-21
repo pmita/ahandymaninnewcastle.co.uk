@@ -4,7 +4,9 @@
 import { useRouter } from 'next/navigation';
 // REACT
 import { useCallback } from 'react';
-// COMPONETNS
+// COMPONENTS
+import { toast } from 'sonner';
+// COMPONENTS
 import { FieldWithLabel } from '@/components/field-with-label';
 import { Button, buttonVariants } from "@/components/ui/button";
 // HOOKS
@@ -15,6 +17,7 @@ import { useForm } from "react-hook-form";
 import { signinForm } from "@/config/forms";
 // UTILS
 import { cn } from "@/utils/helpers";
+import { LoadingSpinner } from '../loading-spinner';
 
 interface SignInFormProps {
   email: string;
@@ -37,6 +40,15 @@ export const SignInForm = () => {
   // EVENTS
   const onSubmit = useCallback(async ({email, password }: SignInFormProps) => {
     mutation.mutate({ email, password });
+
+    if (mutation.isIdle) {
+      toast(
+        <div className="flex justify-center items-center gap-4">
+          <LoadingSpinner /> Loadding...
+        </div>, {
+          id: 'loading-signin-form',
+      })
+    }
 
     if (mutation.isSuccess) router.push('/dashboard');
   }, []);
@@ -62,7 +74,7 @@ export const SignInForm = () => {
         type="submit" 
         disabled={mutation.isPending}
       >
-        {mutation.isPending ? 'Loading...' : 'Sign In'}
+        Sign In
       </Button>
     </form> 
   );

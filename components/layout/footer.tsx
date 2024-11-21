@@ -38,8 +38,8 @@ export const Footer = () => {
       </BannerDescription>
     </BannerHeader>
     <BannerFooter className="text-neutral flex flex-col">
-      <p>Trademark ™ A handy man in newcastle</p>
-      <p>Copyright © 2024 ahandymaninnewcastle.co.uk. All rights reserved.</p>
+      <p>Trademark ™ RefubCity</p>
+      <p>Copyright © 2024 refubcity.co.uk. All rights reserved.</p>
     </BannerFooter>
   </footer>
   )

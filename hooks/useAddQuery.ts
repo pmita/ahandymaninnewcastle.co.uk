@@ -23,8 +23,10 @@ export const useAddQuery = () => {
         }
       })
     },
+    onSettled: () => {
+      toast.dismiss('loading-contact-form');
+    },
     onSuccess: () => {
-      console.log('Query added to the database');
       toast("Sucess", {
         description: "Query added",
         action: {

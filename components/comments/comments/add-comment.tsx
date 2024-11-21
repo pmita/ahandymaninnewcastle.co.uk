@@ -4,11 +4,13 @@
 import { useCallback } from "react";
 // PACKAGES
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 // HOOKS
 import { useAddComment } from "@/hooks/useAddComment";
 // COMPONENTS
 import { FieldWithLabel } from "@/components/field-with-label"
 import { Button, buttonVariants } from "@/components/ui/button";
+import { LoadingSpinner } from "@/components/loading-spinner";
 
 interface IAddCommentForm {
   comment: string;
@@ -28,6 +30,16 @@ export const AddComment = ({ id, status }: { id: string, status: string }) => {
   // EVENTS
   const onSubmit = useCallback(async ({ comment }: IAddCommentForm) => {
     mutation.mutate({ comment, status });
+
+    if (mutation.isIdle) {
+      toast(
+        <div className="flex justify-center items-center gap-4">
+          <LoadingSpinner /> Loadding...
+        </div>, {
+          id: 'loading-add-comment',
+      })
+    }
+
     reset();
   }, [mutation, status, reset]);
 
@@ -43,7 +55,7 @@ export const AddComment = ({ id, status }: { id: string, status: string }) => {
       />
 
       <Button className={buttonVariants({ variant: 'secondary' })} type="submit" disabled={mutation.isPending}>
-        {mutation.isPending ? 'Sending...' : 'Add Comment'}
+        Add Comments
       </Button>
     </form>
   )

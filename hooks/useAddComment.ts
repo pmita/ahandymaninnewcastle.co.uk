@@ -42,6 +42,9 @@ export const useAddComment = (id: string) => {
       },
       onSettled: () => {
         queryClient.invalidateQueries({ queryKey: ['comments', { id }] });
+        toast.dismiss('loading-add-comment');
+      },
+      onSuccess: () => {
         toast("Success", {
           description: "Comment added",
           action: {
@@ -49,6 +52,6 @@ export const useAddComment = (id: string) => {
             onClick: () => toast.dismiss(),
           }
         })
-      },
+      }
     })
 }

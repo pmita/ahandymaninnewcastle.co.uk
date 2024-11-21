@@ -4,6 +4,7 @@
 import { useCallback } from "react";
 // PACKAGES
 import { useForm } from "react-hook-form"
+import { toast } from "sonner";
 // HOOKS
 import { useUpdateItemStatus } from "@/hooks/useUpdateItemStatus";
 import { useItemData } from "@/hooks/useItemData";
@@ -11,6 +12,7 @@ import { useItemData } from "@/hooks/useItemData";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ItemStatus } from "@/components/item/components/item-status";
+import { LoadingSpinner } from "@/components/loading-spinner";
 // TYPES
 import { IQueryItem } from "@/types/firestore";
 
@@ -29,6 +31,15 @@ export const UpdateStatus = ({ id, status }: { id: string, status: string }) => 
   // EVENTS
   const onSubmit = useCallback(({ status }: IStatusForm) => {
     mutation.mutate({ status });
+
+    if (mutation.isIdle) {
+      toast(
+        <div className="flex justify-center items-center gap-4">
+          <LoadingSpinner /> Loadding...
+        </div>, {
+          id: 'loading-update-status',
+      })
+    }
   }, [status, mutation]);
   
   return (
@@ -54,7 +65,7 @@ export const UpdateStatus = ({ id, status }: { id: string, status: string }) => 
         </Select>
 
         <Button className={buttonVariants({ variant: 'secondary' })} type="submit" disabled={mutation.isPending}>
-          {mutation.isPending ? 'Sending...' : 'Update'}
+          Update
         </Button>
         </form>
       </div>

@@ -66,3 +66,27 @@
   transform: translateY(100%);
   transition: all 0.3s ease-in-out;
 }
+
+.spinner{
+  transform-origin:center;
+  animation:spinner_svv2 .75s infinite linear
+}
+
+@keyframes spinner_svv2{
+  100% {
+    transform:rotate(360deg)
+  }
+}
+
+.skeleton {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
