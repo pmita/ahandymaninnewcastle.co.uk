@@ -1,6 +1,5 @@
 // NEXT
 import type { Metadata } from "next";
-// import Head from "next/head";
 // COMPONENTS
 import { CSPostHogProvider } from "./_analytics/provider";
 import { ReactQueryProvider } from "./_react-query/provider";
@@ -25,9 +24,6 @@ export default function RootLayout({
     <html lang="en">
       <ReactQueryProvider>
         <CSPostHogProvider>
-          {/* <Head>
-            <meta name="viewport" content="width=device-width, user-scalable=1" />
-          </Head> */}
           <body 
             className={cn(
               "min-h-screen bg-background font-roboto antialiased",
