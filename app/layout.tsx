@@ -27,20 +27,20 @@ export default function RootLayout({
         <CSPostHogProvider>
           <Head>
             <meta name="viewport" content="width=device-width, user-scalable=no" />
-            <body 
-              className={cn(
-                "min-h-screen bg-background font-roboto antialiased",
-                roboto.variable,
-                poppins.variable
-                
-              )}
-              >
-                <main className="container">
-                  {children}
-                </main>
-                <Toaster />
-            </body>
-            </Head>
+          </Head>
+          <body 
+            className={cn(
+              "min-h-screen bg-background font-roboto antialiased",
+              roboto.variable,
+              poppins.variable
+              
+            )}
+            >
+              <main className="container">
+                {children}
+              </main>
+              <Toaster />
+          </body>
         </CSPostHogProvider>
         </ReactQueryProvider>
     </html>
