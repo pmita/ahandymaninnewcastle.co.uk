@@ -6,7 +6,6 @@ import { getCollectionData, getDocumentData } from "@/data/firestore";
 import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
 // COMPONENTS
 import ItemLayout from "@/components/item/item-layout";
-import { LoadingSection } from "@/components/layout/loading-section";
 
 interface DashboardItemPageProps {
   params: {
@@ -32,7 +31,7 @@ export default async function DashboardItemPage({ params }: DashboardItemPagePro
   })
 
   return (
-    <Suspense fallback={(<LoadingSection />)}>
+    <Suspense fallback={(<h1>Loading...</h1>)}>
       <HydrationBoundary state={dehydrate(queryClient)}>
         <ItemLayout id={id} />
       </HydrationBoundary>

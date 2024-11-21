@@ -2,9 +2,12 @@
 
 // HOOKS
 import { useAddQuery } from "@/hooks/useAddQuery";
+// PACKAGES
+import { toast } from "sonner";
 // COMPONENTS
 import { Button, buttonVariants } from "@/components/ui/button";
 import { FieldWithLabel } from "@/components/field-with-label";
+import { LoadingSpinner } from "../loading-spinner";
 // PACKAGES
 import { type SubmitHandler, useForm } from "react-hook-form";
 // CONFIG
@@ -46,13 +49,21 @@ export const ContactForm = () => {
       });
     }
 
+    if (mutation.isIdle) {
+      toast(
+        <div className="flex justify-center items-center gap-4">
+          <LoadingSpinner /> Loadding...
+        </div>, {
+          id: 'loading-contact-form',
+      })
+    }
+
     reset();
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col justify-center items-center gap-5">
       <h1 className="text-xl mb-12 font-poppins font-extrabold text-secondary text-center">Get in touch!</h1>
-
       {contactForm && contactForm.map((field) => (
         <FieldWithLabel
           key={field.id}
@@ -78,7 +89,7 @@ export const ContactForm = () => {
       )}
 
       <Button className={buttonVariants({ size: 'lg' })} type="submit" disabled={mutation.isPending}>
-        {mutation.isPending ? 'Sending...' : 'Submit'}
+        Submit
       </Button>
     </form>
   )

@@ -2,6 +2,8 @@
 import { useRouter } from "next/navigation";
 // PACKAGES
 import { useMutation } from "@tanstack/react-query";
+// COMPONENTS
+import { toast } from "sonner";
 // HOOKS
 import { useAuth } from "./useAuth";
 // UTILS
@@ -24,9 +26,18 @@ export const useSignin = () => {
       onSuccess: () => {
         router.push('/dashboard');
       },
+      onSettled: () => {
+        toast.dismiss('loading-signin-form');
+      },
       onError: (error) => {
         setUser(null);
-        console.log(error);
+        toast("Something went wrong", {
+          description: error.message,
+          action: {
+            label: "Close",
+            onClick: () => toast.dismiss(),
+          }
+        })
       },
     })
 }

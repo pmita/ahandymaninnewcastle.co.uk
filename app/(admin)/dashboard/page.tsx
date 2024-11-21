@@ -40,7 +40,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Se
         <StatusFilters status={status || 'ALL'} />
         <LayoutFilters layoutView={display || 'GRID'} />
       </section>
-      <Suspense fallback={(<LoadingSection />)}>
+      <Suspense fallback={(<h1>Loading...</h1>)}>
         <HydrationBoundary state={dehydrate(queryClient)}>
           <ItemsLayout />
         </HydrationBoundary>

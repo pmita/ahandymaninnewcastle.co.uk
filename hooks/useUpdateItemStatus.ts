@@ -40,6 +40,9 @@ export const useUpdateItemStatus = (id: string) => {
         },
         onSettled: () => {
           queryClient.invalidateQueries({ queryKey: ['queries', { id }] });
+          toast.dismiss('loading-update-status');
+        },
+        onSuccess: () => {
           toast("Success", {
             description: "Item status updated",
             action: {
@@ -47,6 +50,6 @@ export const useUpdateItemStatus = (id: string) => {
               onClick: () => toast.dismiss(),
             }
           })
-        },
+        }
       })
 }
