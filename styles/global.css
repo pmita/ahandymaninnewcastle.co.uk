@@ -42,6 +42,9 @@
     --accent-blue: 205 100.0 50.0; /* BLUE */
     --accent-yellow: 40 81.0 54.7; /* YELLOW */
     --accent-green: 142 70.6 45.3; /* GREEN */
+
+    touch-action: pan-x pan-y;
+    height: 100%;
   }
 }
 
