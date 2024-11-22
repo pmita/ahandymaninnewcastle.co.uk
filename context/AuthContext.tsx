@@ -22,10 +22,10 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
 
   // USE EFFECTS
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setUser(user);
-        saveFirebaseCookie();
+        await saveFirebaseCookie();
       } else {
         setUser(null);
         removeAuthCookie();

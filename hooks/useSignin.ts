@@ -18,9 +18,11 @@ export const useSignin = () => {
       mutationKey: ['signin'],
       mutationFn: async ({ email, password }: { email: string, password: string }) => {
         const response = await signUserIn(email, password);
-  
-        saveFirebaseCookie();
-        setUser(response.user);
+        
+        if(response.user) {
+          await saveFirebaseCookie();
+          setUser(response.user);
+        }
       },
       onSuccess: () => {
         router.push('/dashboard');
