@@ -15,6 +15,7 @@ import { useMutation } from '@tanstack/react-query';
 // UTILS
 import { cn } from '@/utils/helpers';
 import { signUserOut } from '@/utils/auth';
+import { removeAuthCookie } from '@/utils/cookies';
 
 export const AdminNavbar = () => {
   // STATE && VARIABLES
@@ -26,11 +27,11 @@ export const AdminNavbar = () => {
       await signUserOut();
     },
     onSuccess: () => {
+      removeAuthCookie();
       setUser(null);
       router.push('/signin');
     },
     onError: (error) => {
-      console.log(error);
       toast("Something went wrong", {
         action: {
           label: "Close",

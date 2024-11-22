@@ -21,7 +21,6 @@ export const useSignin = () => {
   
         saveFirebaseCookie();
         setUser(response.user);
-        console.log('User signed in successfully');
       },
       onSuccess: () => {
         router.push('/dashboard');

@@ -7,6 +7,7 @@ import { onAuthStateChanged, type User} from "firebase/auth";
 import { auth } from '@/firebase/client-config';
 // UTILS
 import { saveFirebaseCookie } from "@/utils/auth";
+import { removeAuthCookie } from "@/utils/cookies";
 
 type AuthContextType = {
   user: User| null;
@@ -22,10 +23,14 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
   // USE EFFECTS
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      user ? setUser(user) : setUser(null);
+      if (user) {
+        setUser(user);
+        saveFirebaseCookie();
+      } else {
+        setUser(null);
+        removeAuthCookie();
+      }
     })
-
-    saveFirebaseCookie();
 
     return () => unsubscribe();
   }, [user]);

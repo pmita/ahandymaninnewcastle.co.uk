@@ -19,7 +19,6 @@ export const saveFirebaseCookie = async () => {
 
 export const signUserOut = async () => { 
   await signOut(getAuth(app))
-  removeAuthCookie();
 };
 
 export const getCurrentUser = () => getAuth(app).currentUser;
