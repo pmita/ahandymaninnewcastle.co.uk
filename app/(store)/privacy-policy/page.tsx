@@ -2,7 +2,7 @@
 import { type Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://www.ahandymaninnewcastle.com/privacy-policy'),
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}/privacy-policy` || 'https://www.refubcity.co.uk/privacy-policy'),
   title: 'Privacy Policy',
   description: 'Details of our privacy policy and how we handle your data.',
   robots: {
