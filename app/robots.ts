@@ -5,14 +5,13 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        userAgent: '*',
-        allow: '/',
+        userAgent: "*",
+        allow: "/",
         disallow: [
           "/privacy-policy",
-          '/_next',
-          '/api',
-          '/sitemap.xml',
-          '/robots.txt',
+          "/signin",
+          "/dashboard",
+
         ],
         crawlDelay: 10,
       }
