@@ -11,7 +11,7 @@ import { cn } from "@/utils/helpers";
 import '@/styles/global.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://www.refubcity.co.uk'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://www.refubcity.co.uk'),
   title: {
     default: "RefubCity",
     template: "%s - RefubCity",
@@ -23,11 +23,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "RefubCity - Professional Home Refurbishment",
     description: "We offer expert home refurbishment services including painting, tiling, gardening, and general building.",
-    url: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://www.refubcity.co.uk'),
+    url: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://www.refubcity.co.uk'),
     siteName: "RefubCity",
     images: [
       {
-        url: `${new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://www.refubcity.co.uk')}/opengraph-image.png`,
+        url: `${new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://www.refubcity.co.uk')}/opengraph-image.png`,
         width: 1200,
         height: 630,
         alt: "RefubCity - Professional Home Refurbishment",
