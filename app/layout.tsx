@@ -11,7 +11,7 @@ import { cn } from "@/utils/helpers";
 import '@/styles/global.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://example.com/privacy-policy'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://www.ahandymaninnewcastle.com'),
   title: {
     default: "RefubCity",
     template: "%s - RefubCity",
