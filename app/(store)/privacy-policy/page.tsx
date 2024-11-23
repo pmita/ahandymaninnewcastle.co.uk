@@ -3,7 +3,7 @@ import { type Metadata } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://example.com/privacy-policy'),
-  title: 'Privacy Policy Page',
+  title: 'Privacy Policy',
   description: 'Details of our privacy policy and how we handle your data.',
 }
 
