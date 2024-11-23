@@ -5,7 +5,7 @@ import posthog from 'posthog-js'
 import { PostHogProvider } from 'posthog-js/react'
 
 if (typeof window !== 'undefined') {
-  const posthogKey = process.env.POSTHOG_KEY;
+  const posthogKey = process.env.NEXT_PUBLIC_POSTHOG_KEY;
   const posthogHost = process.env.NEXT_PUBLIC_POSTHOG_HOST;
 
   if (posthogKey && posthogHost) {
