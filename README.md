@@ -1,6 +1,6 @@
 # RefubCity
 
-Store front and dashboard built with next.js and firebase suite. See the full project here (here)[https://www.refubcity.co.uk/]
+Store front and dashboard built with next.js and firebase suite. See the full project here https://www.refubcity.co.uk
 
 ![Screenshot 2024-11-24 at 21 22 22](https://github.com/user-attachments/assets/03b902c1-36d0-4d75-bfd9-745a507bfe4b)
 
