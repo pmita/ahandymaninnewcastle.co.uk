@@ -19,8 +19,11 @@ export const metadata: Metadata = {
   description: "We offer home refurbishment services including painting, tiling, gardening, and general building. Contact us for professional home improvements",
   twitter: {
     card: "summary_large_image",
+    title: "RefubCity - Professional Home Refurbishment",
   },
   openGraph: {
+    type: 'website',
+    locale: "en_GB",
     title: "RefubCity - Professional Home Refurbishment",
     description: "We offer expert home refurbishment services including painting, tiling, gardening, and general building.",
     url: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://www.refubcity.co.uk'),
@@ -33,7 +36,11 @@ export const metadata: Metadata = {
         alt: "RefubCity - Professional Home Refurbishment",
       },
     ], 
-  }
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+  },
 };
 
 export default function RootLayout({
