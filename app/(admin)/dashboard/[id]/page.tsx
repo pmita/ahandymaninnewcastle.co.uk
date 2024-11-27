@@ -18,18 +18,20 @@ export default async function DashboardItemPage({ params }: DashboardItemPagePro
   // SERVER LAND
   const { id } = params;
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery({
-    queryKey: ['queries', { id: id }],
-    queryFn: async () => {
-      return await getDocumentData('queries', id);
-    },
-  })
-  await queryClient.prefetchQuery({
-    queryKey: ['comments', { id }],
-    queryFn: async () => {
-      return getCollectionData(`queries/${id}/comments`, { sort: 'asc' });
-    },
-  })
+  await Promise.all([
+    queryClient.prefetchQuery({
+      queryKey: ['queries', { id: id }],
+      queryFn: async () => {
+        return await getDocumentData('queries', id);
+      },
+    }),
+    queryClient.prefetchQuery({
+      queryKey: ['comments', { id }],
+      queryFn: async () => {
+        return getCollectionData(`queries/${id}/comments`, { sort: 'asc' });
+      },
+    })
+  ]) 
 
   return (
     <Suspense fallback={(<DashboardIdSkeleton />)}>
