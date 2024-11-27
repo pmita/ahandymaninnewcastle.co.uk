@@ -41,6 +41,7 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",
   },
+  manifest:  `${new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://www.refubcity.co.uk')}/site.webmanifest`
 };
 
 export default function RootLayout({
