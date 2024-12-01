@@ -1,9 +1,12 @@
+import { NextConfig } from "next";
+import createMDX from '@next/mdx';
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
+  pageExtensions: ['mdx', 'ts', 'tsx'],
   experimental: {
-    serverActions: {
-      allowedOrigins: ['my-proxy.com', '*.my-proxy.com'],
-    },
+    serverActions: true,
+    mdxRs: true,
   },
 };
 
@@ -56,3 +59,7 @@ module.exports = withSentryConfig(
     automaticVercelMonitors: true,
   }
 );
+
+const withMDX = createMDX({});
+
+export default withMDX(nextConfig);
