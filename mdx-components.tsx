@@ -1,95 +1,130 @@
-import Link from 'next/link';
-import React, { ComponentPropsWithoutRef } from 'react';
-
-type HeadingProps = ComponentPropsWithoutRef<'h1'>;
-type ParagraphProps = ComponentPropsWithoutRef<'p'>;
-type ListProps = ComponentPropsWithoutRef<'ul'>;
-type ListItemProps = ComponentPropsWithoutRef<'li'>;
-type AnchorProps = ComponentPropsWithoutRef<'a'>;
-type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
+// NEXT
+import Image from 'next/image';
+// REACT
+import React from 'react';
+// UTILS
+import { cn } from '@/utils/helpers';
+import type { MDXComponents } from 'mdx/types'
 
 const components = {
-  h1: (props: HeadingProps) => (
-    <h1 className="font-medium pt-12 mb-0 fade-in" {...props} />
-  ),
-  h2: (props: HeadingProps) => (
-    <h2 className="text-gray-800 font-medium mt-8 mb-3" {...props} />
-  ),
-  h3: (props: HeadingProps) => (
-    <h3 className="text-gray-800 font-medium mt-8 mb-3" {...props} />
-  ),
-  h4: (props: HeadingProps) => <h4 className="font-medium" {...props} />,
-  p: (props: ParagraphProps) => (
-    <p className="text-gray-800 leading-snug" {...props} />
-  ),
-  ol: (props: ListProps) => (
-    <ol className="text-gray-800 list-decimal pl-5 space-y-2" {...props} />
-  ),
-  ul: (props: ListProps) => (
-    <ul className="text-gray-800 list-disc pl-5 space-y-1" {...props} />
-  ),
-  li: (props: ListItemProps) => <li className="pl-1" {...props} />,
-  em: (props: ComponentPropsWithoutRef<'em'>) => (
-    <em className="font-medium" {...props} />
-  ),
-  strong: (props: ComponentPropsWithoutRef<'strong'>) => (
-    <strong className="font-medium" {...props} />
-  ),
-  a: ({ href, children, ...props }: AnchorProps) => {
-    const className = 'text-blue-500 hover:text-blue-700';
-    if (href?.startsWith('/')) {
-      return (
-        <Link href={href} className={className} {...props}>
-          {children}
-        </Link>
-      );
-    }
-    if (href?.startsWith('#')) {
-      return (
-        <a href={href} className={className} {...props}>
-          {children}
-        </a>
-      );
-    }
-    return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={className}
-        {...props}
-      >
-        {children}
-      </a>
-    );
-  },
-  Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
-    <table>
-      <thead>
-        <tr>
-          {data.headers.map((header, index) => (
-            <th key={index}>{header}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.rows.map((row, index) => (
-          <tr key={index}>
-            {row.map((cell, cellIndex) => (
-              <td key={cellIndex}>{cell}</td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  ),
-  blockquote: (props: BlockquoteProps) => (
-    <blockquote
-      className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700"
+  h1: ({ className, ...props}: { className?: string}) => (
+    <h1
+      className={cn(
+        "mt-2 scroll-m-20 text-4xl font-poppins font-bold tracking-tight",
+        className
+      )}
       {...props}
     />
   ),
-};
+  h2: ({ className, ...props}: { className?: string}) => (
+    <h2
+      className={cn(
+        "mt-8 scroll-m-20 text-3xl font-poppins font-semibold tracking-tight first:mt-0",
+        className
+      )}
+      {...props}
+    />
+  ),
+  h3: ({ className, ...props}: { className?: string}) => (
+    <h3
+      className={cn(
+        "mt-8 scroll-m-20 text-42l font-roboto font-semibold tracking-tight",
+        className
+      )}
+      {...props}
+    />
+  ),
+  h4: ({ className, ...props}: { className?: string}) => (
+    <h4
+      className={cn(
+        "mt-8 scroll-m-20 text-xl font-roboto font-semibold tracking-tight",
+        className
+      )}
+      {...props}
+    />
+  ),
+  h5: ({ className, ...props}: { className?: string}) => (
+    <h5
+      className={cn(
+        "mt-8 scroll-m-20 text-lg font-roboto font-semibold tracking-tight",
+        className
+      )}
+      {...props}
+    />
+  ),
+  h6: ({ className, ...props}: { className?: string}) => (
+    <h6
+      className={cn(
+        "mt-8 scroll-m-20 text-base font-roboto font-semibold tracking-tight",
+        className
+      )}
+      {...props}
+    />
+  ),
+  a: ({ className, ...props}: { className?: string}) => (
+    <a
+      className={cn(
+        "font-medium underline underline-offset-4 text-primary-green",
+        className
+      )}
+      {...props}
+    />
+  ),
+  p: ({ className, ...props}: { className?: string}) => (
+    <p
+      className={cn(
+        "leading-7 [&:not(:first-child)]:mt-6 text-justify m-10",
+        className
+      )}
+      {...props}
+    />
+  ),
+  ul: ({ className, ...props }: { className?: string}) => (
+    <ul 
+      className={cn(
+        "my-6 ml-6 list-disc", 
+        className
+      )} 
+      {...props} 
+    />
+  ),
+  ol: ({ className, ...props }: { className?: string }) => (
+    <ol className={cn(
+        "my-6 ml-6 list-decimal", 
+        className
+      )} 
+      {...props} 
+    />
+  ),
+  li: ({ className, ...props }: { className?: string }) => (
+    <li className={cn(
+        "mt-2", 
+        className
+      )} 
+      {...props} 
+    />
+  ),
+  blockquote: ({ className, ...props }: { className?: string }) => (
+    <blockquote
+      className={cn(
+        "mt-6 border-l-2 pl-6 italic [&>*]:text-muted-foreground",
+        className
+      )}
+      {...props}
+    />
+  ),
+  img: ({ className, alt, ...props}: React.ImgHTMLAttributes<HTMLImageElement>) => (
+    <img
+      className={cn(
+        "rounded border",
+        className
+      )}
+      alt={alt}
+      {...props}
+    />
+  ),
+  Image: (props: any) => <Image {...props} />,
+}
 
 declare global {
   type MDXProvidedComponents = typeof components;

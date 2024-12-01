@@ -1,8 +1,5 @@
-import { NextConfig } from "next";
-import createMDX from '@next/mdx';
-
 /** @type {import('next').NextConfig} */
-const nextConfig: NextConfig = {
+const nextConfig = {
   pageExtensions: ['mdx', 'ts', 'tsx'],
   experimental: {
     serverActions: true,
@@ -16,8 +13,11 @@ module.exports = nextConfig;
 // Injected content via Sentry wizard below
 
 const { withSentryConfig } = require("@sentry/nextjs");
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx?$/,
+});
 
-module.exports = withSentryConfig(
+const sentryConfig = withSentryConfig(
   module.exports,
   {
     // For all available options, see:
@@ -60,6 +60,5 @@ module.exports = withSentryConfig(
   }
 );
 
-const withMDX = createMDX({});
+module.exports = withMDX(sentryConfig);
 
-export default withMDX(nextConfig);
