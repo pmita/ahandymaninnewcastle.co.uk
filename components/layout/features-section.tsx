@@ -1,3 +1,5 @@
+// NEXT
+import Image from "next/image"
 // COMPONENTS
 import { DescriptionCard } from "@/components/description-card"
 // CONFIG
@@ -9,15 +11,19 @@ export const FeaturesSection = () => {
     <section className="min-h-[100dvh] flex flex-col items-center justify-center">
       <h2 className="text-2xl m-12 font-poppins font-bold text-secondary text-center">Our Expertise</h2>
       <div className="m-8 grid grid-cols-1 lg:grid-cols-[repeat(3,1fr)] grid-rows-[repeat(2,320px)] gap-4">
-        {sellingPoints.map((point, index) => (
+        {sellingPoints.map(({ id, title, description, src, alt}) => (
           <DescriptionCard
-            key={index}
-            title={point.title}
-            description={point.description}
+            key={id}
+            title={title}
+            description={description}
             headerIcon={(
-              <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px">
-                <path d={point.svgPath} />
-              </svg>
+              <Image 
+                src={src}
+                alt={alt}
+                width={50}
+                height={50}
+                loading="eager"
+              />
             )}
           />
         ))}
